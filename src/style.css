@@ -23,3 +23,41 @@ body {
 #navbar-github {
 	margin-left: auto;
 }
+
+.container {
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.card {
+    background: paleturquoise;
+    width: 250px;
+    height: 350px;
+    margin: 10px;
+    border-radius: 15px;
+    
+}
+
+.cardImage {
+    height: 250px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+    background-color: lightskyblue;
+    
+}
+.card:hover {
+   background-color: bisque;
+   color: orange;
+   cursor: pointer;
+   transform: scale(1.2);
+
+}
+
+h2 {
+    text-align: center;
+    margin-top: 35px;
+}
