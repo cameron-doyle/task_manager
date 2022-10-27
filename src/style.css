@@ -14,9 +14,49 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/* new task button */
+#btn-add-new-task {
+	position: fixed;
+	bottom: 0.8em;
+	right: 0.8em;
+	padding: 0;
+}
+
+/* New task icon */
+#btn-add-new-task span {
+	margin: 0.5em;
+	font-size: 1.5em;
+}
+
+/* New Task Modal */
+#new-task label{
+	margin-bottom: auto;
+}
+
+#new-task input,
+#new-task textarea
+{
+	margin-bottom: 1.0em;
+}
+
+#btn-new-task-reset {
+	margin-right: auto;
+}
+
+/* Mobile view */
 @media only screen and (max-width: 500px) {
 	/* Please do the mobile design first! */
-	body {
-		
+
+	/* New task button size */
+	#btn-add-new-task span {
+		margin: 0.2em;
+		font-size: 3em;
+	}
+
+	/* New task textarea height */
+	#new-task textarea{
+		height: 13em;
 	}
 }
+/* Don't put code below here, non mobile code must come before the @media query */

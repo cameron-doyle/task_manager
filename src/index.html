@@ -28,16 +28,59 @@
 	</div>
 
 	<!-- Assigned to: Cameron -->
-	<button id="btn-add-new-">
+	<button id="btn-add-new-task" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-task">
 		<!-- Fixed position "new task" button -->
-		<span class="material-symbols-outlined">
-			addasdsad
-		</span>
+		<span class="material-symbols-outlined">add</span>
 	</button>
 
 	<!-- Assigned to: Cameron -->
-	<div>
+	<div id="new-task" class="modal fade" tabindex="-1" role="form" aria-labelledby="new-task-modal-title" aria-hidden="true">
 		<!-- Create "new task" form modal -->
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="new-task-modal-title">New Task</h5>
+				</div>
+				<div class="modal-body">
+					<label for="txt-new-task-name" class="form-label">Name</label>
+					<input type="text" autocomplete="off" name="txt-task-name" id="txt-new-task-name" class="form-control">
+
+					<label for="txt-new-task-description" class="form-label">Description</label>
+					<textarea name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10" autocomplete="off" class="form-control"></textarea>
+					<!-- <input type="" autocomplete="off" name="txt-task-description" id="txt-new-task-description" class="form-control"> -->
+
+					<label for="txt-new-task-assigned-to" class="form-label ">Assign To</label>
+					<input type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to" class="form-control">
+
+					<div class="row">
+						<div class="col-6">
+							<label for="txt-new-task-due-date" class="form-label">Due Date</label>
+							<input type="text" name="txt-task-due-date" id="txt-new-task-due-date" class="form-control">
+						</div>
+						<div class="col-6">
+							<label for="txt-new-task-status" class="form-label">Status</label>
+							<select name="txt-new-task-status " id="txt-new-task-status" class="form-select">
+								<option value="todo">To Do</option>
+								<option value="inprogress">In Progress</option>
+								<option value="review">Review</option>
+								<option value="complete">Complete</option>
+							</select>
+						</div>
+					</div>
+
+
+					<!-- <label for="txt-new-task-status" class="form-label">Status</label> -->
+					<!-- <input type="text" name="txt-task-status" id="txt-new-task-status" class="form-control"> -->
+
+					
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-danger" id="btn-new-task-reset">Reset</button>
+					<button class="btn btn-dark" id="btn-new-task-cancel">Cancel</button>
+					<button class="btn btn-primary" id="btn-new-task-save">Add Task</button>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- Assigned to: Tamika -->
