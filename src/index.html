@@ -20,17 +20,22 @@
 	<!-- Our css -->
 	<link rel="stylesheet" href="style.css">
 	<title>Document</title>
+
+	<!-- Scrip "runs" after html has laoded (prevents errors) -->
+	<script defer>
+
+	</script>
 </head>
 
 <body>
 	<!-- Assigned to: James -->
-	<nav id="nav" class="navbar navbar-light bg-light">
+	<nav id="nav" class="navbar">
     <!-- the nav -->
 	<a class="navbar-brand" href="title">
 		<img src="logo.png" width="30" height="30" alt="logo">
 	</a>
 	<a class="btn btn-light navbar-item" id="navbar-github">GitHub</a>
-	<a class="btn btn-light navbar-item" id="navbar-credit">credit</a>
+	<a class="btn btn-light navbar-item" id="navbar-credit">Credit</a>
 	</nav>
 
 	<!-- Assigned to: Declan -->
@@ -101,35 +106,37 @@
 					<h5 class="modal-title" id="new-task-modal-title">New Task</h5>
 				</div>
 				<div class="modal-body">
-					<label for="txt-new-task-name" class="form-label">Name</label>
-					<input type="text" autocomplete="off" name="txt-task-name" id="txt-new-task-name" class="form-control">
+					<form id="frm-new-task" action="" method="post">
+						<label for="txt-new-task-name" class="form-label">Name</label>
+						<input required type="text" autocomplete="off" name="txt-task-name" id="txt-new-task-name" class="form-control" pattern="^[a-zA-Z0-9]{1,}$">
 
-					<label for="txt-new-task-description" class="form-label">Description</label>
-					<textarea name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10" autocomplete="off" class="form-control"></textarea>
+						<label for="txt-new-task-description" class="form-label">Description</label>
+						<textarea required name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10" autocomplete="off" class="form-control"></textarea>
 
-					<label for="txt-new-task-assigned-to" class="form-label ">Assign To</label>
-					<input type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to" class="form-control">
+						<label for="txt-new-task-assigned-to" class="form-label">Assign To</label>
+						<input required type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to" class="form-control" pattern="^[a-zA-Z0-9]{1,}$">
 
-					<div class="row">
-						<div class="col-6">
-							<label for="txt-new-task-due-date" class="form-label">Due Date</label>
-							<input type="text" name="txt-task-due-date" id="txt-new-task-due-date" class="form-control">
+						<div class="row">
+							<div class="col-6">
+								<label for="ds-task-due-date" class="form-label">Due Date</label>
+								<input required type="date" name="ds-task-due-date" id="ds-task-due-date" class="form-control">
+							</div>
+							<div class="col-6">
+								<label for="txt-new-task-status" class="form-label">Status</label>
+								<select name="txt-new-task-status" id="txt-new-task-status" class="form-select">
+									<option value="todo">To Do</option>
+									<option value="inprogress">In Progress</option>
+									<option value="review">Review</option>
+									<option value="complete">Complete</option>
+								</select>
+							</div>
 						</div>
-						<div class="col-6">
-							<label for="txt-new-task-status" class="form-label">Status</label>
-							<select name="txt-new-task-status " id="txt-new-task-status" class="form-select">
-								<option value="todo">To Do</option>
-								<option value="inprogress">In Progress</option>
-								<option value="review">Review</option>
-								<option value="complete">Complete</option>
-							</select>
-						</div>
-					</div>
+					</form>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-danger" id="btn-new-task-reset">Reset</button>
 					<button class="btn btn-dark" id="btn-new-task-cancel">Cancel</button>
-					<button class="btn btn-primary" id="btn-new-task-save">Add Task</button>
+					<button type="submit" form="frm-new-task" class="btn btn-primary" id="btn-new-task-save">Add Task</button>
 				</div>
 			</div>
 		</div>
