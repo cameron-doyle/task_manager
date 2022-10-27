@@ -15,7 +15,7 @@ body {
 }
 
 
-/* new task button */
+/* New Task Modal */
 #btn-add-new-task {
 	position: fixed;
 	bottom: 0.8em;
@@ -23,13 +23,11 @@ body {
 	padding: 0;
 }
 
-/* New task icon */
 #btn-add-new-task span {
 	margin: 0.5em;
 	font-size: 1.5em;
 }
 
-/* New Task Modal */
 #new-task label{
 	margin-bottom: auto;
 }
@@ -43,11 +41,24 @@ body {
 #btn-new-task-reset {
 	margin-right: auto;
 }
+/* End new task modal */
+
+
+
+/* Navbar */
+#nav{
+	padding-left: 1em;
+	padding-right: 1em;
+}
 
 #navbar-github {
 	margin-left: auto;
 }
+/* End navbar */
 
+
+
+/* Content */
 .container {
 
     display: flex;
@@ -85,6 +96,8 @@ h2 {
     text-align: center;
     margin-top: 35px;
 }
+
+/* End content */
 
 /* Mobile view */
 @media only screen and (max-width: 500px) {

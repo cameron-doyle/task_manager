@@ -24,76 +24,67 @@
 
 <body>
 	<!-- Assigned to: James -->
-	<nav class="navbar navbar-light bg-light">
+	<nav id="nav" class="navbar navbar-light bg-light">
     <!-- the nav -->
-		<a class="navbar-brand" href="title">
-		  <img src="logo.png" width="30" height="30" alt="logo">
-		</a>
-      <a class="btn btn-light navbar-item" id="navbar-github">GitHub</a>
-		  <a class="btn btn-light navbar-item" id="navbar-credit">credit</a>
-		</nav>
+	<a class="navbar-brand" href="title">
+		<img src="logo.png" width="30" height="30" alt="logo">
+	</a>
+	<a class="btn btn-light navbar-item" id="navbar-github">GitHub</a>
+	<a class="btn btn-light navbar-item" id="navbar-credit">credit</a>
+	</nav>
 
-		<!-- Assigned to: Declan -->
-		<section class="container">
-			<div class="card">
-				<div class="cardImage task1"></div>
-				<h2>Card 1</h2>
-				
-			</div>
-	
-			<div class="card">
-				<div class="cardImage task2"></div>
-				<h2>Card 2</h2>
-				
-			</div>
-	
-			<div class="card">
-				<div class="cardImage task3"></div>
-				<h2>Card 3</h2>
-				
-			</div>
-	
-			<div class="card">
-				<div class="cardImage task4"></div>
-				<h2>Card 4</h2>
-				
-			</div>
-	
-			
-	
-		</section>
-	
-		<section class="container">
-			<div class="card">
-				<div class="cardImage task1"></div>
-				<h2>Card 5</h2>
-				
-			</div>
-	
-			<div class="card">
-				<div class="cardImage task2"></div>
-				<h2>Card 6</h2>
-				
-			</div>
-	
-			<div class="card">
-				<div class="cardImage task3"></div>
-				<h2>Card 7</h2>
-				
-			</div>
-	
-			<div class="card">
-				<div class="cardImage task4"></div>
-				<h2>Card 8</h2>
-				
-			</div>
-	
-			
-	
-		</section>
-		<div>
-			<!-- Content -->
+	<!-- Assigned to: Declan -->
+	<!-- TODO: Convert to bootstrap rows/cols -->
+	<!-- TODO: Implement card design (reference wireframe's "Display Card") -->
+	<!-- TODO: Change card width/height ratio to 4:3 (landscape is better for reading) -->
+	<!-- 
+		Relevant bootstrap docs:
+		 https://getbootstrap.com/docs/4.0/layout/grid/
+		 https://getbootstrap.com/docs/4.0/components/card/
+	 -->
+	<section class="container">
+		<div class="card">
+			<div class="cardImage task1"></div>
+			<h2>Card 1</h2>
 		</div>
+
+		<div class="card">
+			<div class="cardImage task2"></div>
+			<h2>Card 2</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task3"></div>
+			<h2>Card 3</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task4"></div>
+			<h2>Card 4</h2>
+		</div>
+	</section>
+
+	<section class="container">
+		<div class="card">
+			<div class="cardImage task1"></div>
+			<h2>Card 5</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task2"></div>
+			<h2>Card 6</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task3"></div>
+			<h2>Card 7</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task4"></div>
+			<h2>Card 8</h2>
+		</div>
+	</section>
 
 	<!-- Assigned to: Cameron -->
 	<button id="btn-add-new-task" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-task">
@@ -115,7 +106,6 @@
 
 					<label for="txt-new-task-description" class="form-label">Description</label>
 					<textarea name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10" autocomplete="off" class="form-control"></textarea>
-					<!-- <input type="" autocomplete="off" name="txt-task-description" id="txt-new-task-description" class="form-control"> -->
 
 					<label for="txt-new-task-assigned-to" class="form-label ">Assign To</label>
 					<input type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to" class="form-control">
@@ -135,12 +125,6 @@
 							</select>
 						</div>
 					</div>
-
-
-					<!-- <label for="txt-new-task-status" class="form-label">Status</label> -->
-					<!-- <input type="text" name="txt-task-status" id="txt-new-task-status" class="form-control"> -->
-
-					
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-danger" id="btn-new-task-reset">Reset</button>
