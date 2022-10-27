@@ -14,7 +14,9 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-nav {
-	background-color: black;
-	color: white;
+@media only screen and (max-width: 500px) {
+	/* Please do the mobile design first! */
+	body {
+		background-color: black;
+	}
 }
