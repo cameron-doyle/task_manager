@@ -71,7 +71,7 @@ body {
     flex-wrap: wrap;
     margin-top: 50px;
 }
-
+/* 
 .card {
     background: #91c6f8;
     width: 250px;
@@ -80,15 +80,17 @@ body {
     border-radius: 15px;
     
 }
-
+*/
 .cardImage {
     height: 250px;
     margin-bottom: 15px;
     background-size: cover;
     border-radius: 15px 15px 0 0;
     background-color: #91c6f8;
-    
+  
+	
 }
+/*
 .card:hover {
    background-color: bisque;
    color: orange;
@@ -97,6 +99,29 @@ body {
 
 }
 
+*/
+
+#container .card-header h3{
+     display: inline-block;
+}
+
+#container .card-header p{
+	display: inline-block;
+	float: right;
+}
+#container .card-body {
+
+}
+#container .card-footer h5{
+	display: inline-block;
+
+}
+
+#container .card-footer p{
+	display: inline-block;
+	float: right;
+
+}
 h2 {
     text-align: center;
     margin-top: 35px;
