@@ -107,33 +107,34 @@ body {
     margin-top: 50px; */
 }
 
-#card-container{
+#content-container li {
 	border-radius: 0;
 	padding: 10px;
 	flex: 1 0 500px;
 	box-sizing: border-box;
 	margin: 1rem .25em;
+	border: none;
 }
 
-#content-container li {
-	border: none;
+#content-container button {
+	width: 100%;
 }
 
 /* Calculates the cards max width based on screen size */
 @media screen and (min-width: 40em) {
-    #card-container {
+    #content-container li {
        max-width: calc(50% -  1em);
     }
 }
  
 @media screen and (min-width: 50em) {
-    #card-container {
+    #content-container li {
         max-width: calc(33.33% - 1em);
     }
 }
 
 @media screen and (min-width: 70em) {
-    #card-container {
+    #content-container li {
         max-width: calc(25% - 1em);
     }
 }
