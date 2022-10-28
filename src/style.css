@@ -15,6 +15,36 @@ body {
 }
 
 
+#open-card-description {
+	margin: 1% 4%;
+	text-align: justify;
+}
+
+#opencard-footer {
+
+
+}
+
+#open-card-duedate-assignedto {
+	margin-bottom: 0;
+	font-size: 1em;
+	margin-top: 0.40em;
+}
+
+#open-card-title {
+	font-size: 1.25em;
+}
+
+#opencard-save-close-container {
+	background-color: purple;
+	height: 100%;
+	display: inline-block;
+}
+
+#card-control-container button {
+	display: block;
+}
+
 /* New Task Modal */
 #btn-add-new-task {
 	position: fixed;
@@ -64,15 +94,52 @@ body {
 
 
 /* Content */
-.container {
-
+#content-container {
+	padding: 5%;
+	flex-direction: row;
+	flex-wrap: wrap;
+	display: flex;
+	/* justify-content: space-between; */
+/* 
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 50px; */
 }
-/* 
-.card {
+
+#content-container li {
+	border-radius: 0;
+	padding: 10px;
+	flex: 1 0 500px;
+	box-sizing: border-box;
+	margin: 1rem .25em;
+	border: none;
+}
+
+#content-container button {
+	width: 100%;
+}
+
+/* Calculates the cards max width based on screen size */
+@media screen and (min-width: 40em) {
+    #content-container li {
+       max-width: calc(50% -  1em);
+    }
+}
+ 
+@media screen and (min-width: 50em) {
+    #content-container li {
+        max-width: calc(33.33% - 1em);
+    }
+}
+
+@media screen and (min-width: 70em) {
+    #content-container li {
+        max-width: calc(25% - 1em);
+    }
+}
+
+/* .card {
     background: #91c6f8;
     width: 250px;
     height: 350px;
@@ -125,7 +192,7 @@ body {
 h2 {
     text-align: center;
     margin-top: 35px;
-}
+} */
 
 /* End content */
 

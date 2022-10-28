@@ -22,9 +22,9 @@
 	<title>Document</title>
 
 	<!-- Scrip "runs" after html has laoded (prevents errors) -->
-	<script defer>
+<!-- 	<script defer>
 
-	</script>
+	</script> -->
 </head>
 
 <body>
@@ -34,12 +34,11 @@
 	<a class="navbar-brand" href="title">
 		<img src="logo.png" width="30" height="30" alt="logo">
 	</a>
-	<a class="btn btn-light navbar-item" id="navbar-github">GitHub</a>
-	<a class="btn btn-light navbar-item" id="navbar-credit">Credit</a>
+	<a class="btn btn-light navbar-item" id="navbar-github" href="https://github.com/cameron-doyle/task_manager" target="_blank">GitHub</a>
+	<a class="btn btn-light navbar-item" id="navbar-credit" href="https://github.com/cameron-doyle/task_manager#credits" target="_blank">Credit</a>
 	</nav>
 
 	<!-- Assigned to: Declan -->
-	<!-- TODO: Convert to bootstrap rows/cols -->
 	<!-- TODO: Implement card design (reference wireframe's "Display Card") -->
 	<!-- TODO: Change card width/height ratio to 4:3 (landscape is better for reading) -->
 	<!-- 
@@ -47,6 +46,21 @@
 		 https://getbootstrap.com/docs/4.0/layout/grid/
 		 https://getbootstrap.com/docs/4.0/components/card/
 	 -->
+
+
+	<ul id="content-container" class="list-group">
+		<li class="list-group-item">
+			<button data-bs-toggle="modal" data-bs-target="#modalthing">
+				<div class="card">
+					<div class="card-header">This is header</div>
+					<div class="card-body">This is body</div>
+					<div class="card-footer">This is footer</div>
+				</div>
+			</button>
+		</li>
+	 </ul>
+
+
 	<section id="container">
 		<div class="card">
 			<div class="card-header">
@@ -153,10 +167,39 @@
 		</div>
 	</div>
 
-		<!-- Assigned to: Tamika -->
-		<div>
-			<!-- "Open Card" modal -->
+	<div class="modal fade" id="modalthing" tabindex="-1" role="form" aria-labelledby="open-card-title" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="open-card-title">Task Name</h5>
+					<p id="open-card-duedate-assignedto">Tamika - 11/12</p>
+				</div>
+
+				<div class="model-body">
+					<p id="open-card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias id consequatur reprehenderit placeat omnis, atque natus earum architecto optio doloremque ducimus ipsa blanditiis incidunt quasi cumque laboriosam commodi quisquam consectetur inventore repudiandae fuga voluptate asperiores et. Debitis, unde nulla voluptate tenetur recusandae possimus vel? Laudantium consectetur eius eligendi! Fugit minus minima quos, ut nam blanditiis a nostrum maiores officiis illum porro odio? Ipsa quod sint ipsum impedit. Cumque quae optio dolore ratione ab totam expedita impedit incidunt dignissimos in recusandae obcaecati accusamus odio molestias facere porro alias commodi, nisi aut? Suscipit, at. Et unde quam veritatis pariatur ea voluptate officia.</p>
+				</div>
+
+				<div class="modal-footer" id="opencard-footer">
+					<div id="card-control-container">
+						<button type="button" class="btn btn-secondary">Delete</button>
+
+						<label for="opencard-status">Status</label>
+						<select class="form-select" name="opencard-status" id="opencard-status">
+							<option value="todo" id="open-card-todo">To Do</option>                    
+							<option value="inprogress" id="open-card-inprogress">In Progress</option>
+							<option value="review" id="open-card-review">Review</option>                    
+							<option value="complete" id="open-card-complete">Complete</option>
+						</select>   
+					</div>
+
+					<div id="opencard-save-close-container">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+						<button id="btn-opencard-submit" class="btn btn-primary">Save</button>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
 </body>
 
 </html>
