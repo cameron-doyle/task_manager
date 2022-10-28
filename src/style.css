@@ -3,7 +3,7 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-}
+} 
 
 .clear::after {
 	float: none;
@@ -13,6 +13,7 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
+
 
 #open-card-description {
 	margin: 1% 4%;
@@ -44,9 +45,108 @@ body {
 	display: block;
 }
 
+/* New Task Modal */
+#btn-add-new-task {
+	position: fixed;
+	bottom: 0.8em;
+	right: 0.8em;
+	padding: 0;
+}
+
+#btn-add-new-task span {
+	margin: 0.5em;
+	font-size: 1.5em;
+}
+
+#new-task label{
+	margin-bottom: auto;
+}
+
+#new-task input,
+#new-task textarea
+{
+	margin-bottom: 1.0em;
+}
+
+#btn-new-task-reset {
+	margin-right: auto;
+}
+/* End new task modal */
+
+
+
+/* Navbar */
+#nav{
+	padding-left: 1em;
+	padding-right: 1em;
+	background-color: #91c6f8;
+}
+
+#navbar-credit {
+	margin-left: 1em;
+}
+
+#navbar-github {
+	margin-left: auto;
+}
+/* End navbar */
+
+
+
+/* Content */
+.container {
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.card {
+    background: #91c6f8;
+    width: 250px;
+    height: 350px;
+    margin: 10px;
+    border-radius: 15px;
+    
+}
+
+.cardImage {
+    height: 250px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+    background-color: #91c6f8;
+    
+}
+.card:hover {
+   background-color: bisque;
+   color: orange;
+   cursor: pointer;
+   transform: scale(1.2);
+
+}
+
+h2 {
+    text-align: center;
+    margin-top: 35px;
+}
+
+/* End content */
+
+/* Mobile view */
 @media only screen and (max-width: 500px) {
 	/* Please do the mobile design first! */
-	body {
-		
+
+	/* New task button size */
+	#btn-add-new-task span {
+		margin: 0.2em;
+		font-size: 3em;
+	}
+
+	/* New task textarea height */
+	#new-task textarea{
+		height: 13em;
 	}
 }
+/* Don't put code below here, non mobile code must come before the @media query */

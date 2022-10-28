@@ -1,44 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
 
 	<!-- Google fonts -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 	<!-- Our css -->
 	<link rel="stylesheet" href="style.css">
 	<title>Document</title>
+
+	<!-- Scrip "runs" after html has laoded (prevents errors) -->
+	<script defer>
+
+	</script>
 </head>
+
 <body>
 	<!-- Assigned to: James -->
-	<nav class="navbar">
-		<!-- the nav -->
+	<nav id="nav" class="navbar">
+    <!-- the nav -->
+	<a class="navbar-brand" href="title">
+		<img src="logo.png" width="30" height="30" alt="logo">
+	</a>
+	<a class="btn btn-light navbar-item" id="navbar-github">GitHub</a>
+	<a class="btn btn-light navbar-item" id="navbar-credit">Credit</a>
 	</nav>
 
 	<!-- Assigned to: Declan -->
-	<div>
-		<!-- Content -->
-	</div>
+	<!-- TODO: Convert to bootstrap rows/cols -->
+	<!-- TODO: Implement card design (reference wireframe's "Display Card") -->
+	<!-- TODO: Change card width/height ratio to 4:3 (landscape is better for reading) -->
+	<!-- 
+		Relevant bootstrap docs:
+		 https://getbootstrap.com/docs/4.0/layout/grid/
+		 https://getbootstrap.com/docs/4.0/components/card/
+	 -->
+	<section class="container">
+		<div class="card">
+			<div class="cardImage task1"></div>
+			<h2>Card 1</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task2"></div>
+			<h2>Card 2</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task3"></div>
+			<h2>Card 3</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task4"></div>
+			<h2>Card 4</h2>
+		</div>
+	</section>
+
+	<section class="container">
+		<div class="card">
+			<div class="cardImage task1"></div>
+			<h2>Card 5</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task2"></div>
+			<h2>Card 6</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task3"></div>
+			<h2>Card 7</h2>
+		</div>
+
+		<div class="card">
+			<div class="cardImage task4"></div>
+			<h2>Card 8</h2>
+		</div>
+	</section>
 
 	<!-- Assigned to: Cameron -->
-	<button id="btn-add-new-">
+	<button id="btn-add-new-task" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-task">
 		<!-- Fixed position "new task" button -->
-		<span class="material-symbols-outlined">
-			addasdsad
-		</span>
+		<span class="material-symbols-outlined">add</span>
 	</button>
 
 	<!-- Assigned to: Cameron -->
-	<div>
+	<div id="new-task" class="modal fade" tabindex="-1" role="form" aria-labelledby="new-task-modal-title" aria-hidden="true">
 		<!-- Create "new task" form modal -->
-	</div>
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="new-task-modal-title">New Task</h5>
+				</div>
+				<div class="modal-body">
+					<form id="frm-new-task" action="" method="post">
+						<label for="txt-new-task-name" class="form-label">Name</label>
+						<input required type="text" autocomplete="off" name="txt-task-name" id="txt-new-task-name" class="form-control" pattern="^[a-zA-Z0-9]{1,}$">
+
+						<label for="txt-new-task-description" class="form-label">Description</label>
+						<textarea required name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10" autocomplete="off" class="form-control"></textarea>
+
+						<label for="txt-new-task-assigned-to" class="form-label">Assign To</label>
+						<input required type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to" class="form-control" pattern="^[a-zA-Z0-9]{1,}$">
+
+						<div class="row">
+							<div class="col-6">
+								<label for="ds-task-due-date" class="form-label">Due Date</label>
+								<input required type="date" name="ds-task-due-date" id="ds-task-due-date" class="form-control">
+							</div>
+							<div class="col-6">
+								<label for="txt-new-task-status" class="form-label">Status</label>
+								<select name="txt-new-task-status" id="txt-new-task-status" class="form-select">
+									<option value="todo">To Do</option>
+									<option value="inprogress">In Progress</option>
+									<option value="review">Review</option>
+									<option value="complete">Complete</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-danger" id="btn-new-task-reset">Reset</button>
+					<button class="btn btn-dark" id="btn-new-task-cancel">Cancel</button>
+					<button type="submit" form="frm-new-task" class="btn btn-primary" id="btn-new-task-save">Add Task</button>
+
+
 
 	<!-- Assigned to: Tamika -->
 	<div>
@@ -80,12 +180,15 @@
 						<button id="btn-opencard-submit" class="btn btn-primary">Save</button>
 					</div>
 					</div>
-
-
-
 				</div>
 			</div>
 		</div>
 	</div>
+
+		<!-- Assigned to: Tamika -->
+		<div>
+			<!-- "Open Card" modal -->
+		</div>
 </body>
+
 </html>
