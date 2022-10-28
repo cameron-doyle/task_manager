@@ -137,6 +137,49 @@
 					<button class="btn btn-danger" id="btn-new-task-reset">Reset</button>
 					<button class="btn btn-dark" id="btn-new-task-cancel">Cancel</button>
 					<button type="submit" form="frm-new-task" class="btn btn-primary" id="btn-new-task-save">Add Task</button>
+
+
+
+	<!-- Assigned to: Tamika -->
+	<div>
+		<!-- "Open Card" modal -->
+    <button id="btn-add-new-opencard" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalthing">
+        Add Task 
+		<span class="material-symbols-outlined">add</span>
+    </button>
+
+
+		<div class="modal fade" id="modalthing" tabindex="-1" role="form" aria-labelledby="opencard-title" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="open-card-title">Task Name</h5>
+						<p id="open-card-duedate-assignedto">Tamika - 11/12</p>
+
+					</div>
+					<div class="model-body">
+						
+						<p id="open-card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias id consequatur reprehenderit placeat omnis, atque natus earum architecto optio doloremque ducimus ipsa blanditiis incidunt quasi cumque laboriosam commodi quisquam consectetur inventore repudiandae fuga voluptate asperiores et. Debitis, unde nulla voluptate tenetur recusandae possimus vel? Laudantium consectetur eius eligendi! Fugit minus minima quos, ut nam blanditiis a nostrum maiores officiis illum porro odio? Ipsa quod sint ipsum impedit. Cumque quae optio dolore ratione ab totam expedita impedit incidunt dignissimos in recusandae obcaecati accusamus odio molestias facere porro alias commodi, nisi aut? Suscipit, at. Et unde quam veritatis pariatur ea voluptate officia.</p>
+		
+					</div>
+					<div class="modal-footer" id="opencard-footer">
+					<div id="card-control-container">
+						<button type="button" class="btn btn-secondary">Delete</button>  
+
+
+						<label for="opencard-status">Status</label>
+						<select class="form-select" name="opencard-status" id="opencard-status">
+							<option value="todo" id="open-card-todo">To Do</option>                    
+							<option value="inprogress" id="open-card-inprogress">In Progress</option>
+							<option value="review" id="open-card-review">Review</option>                    
+							<option value="complete" id="open-card-complete">Complete</option>
+						</select>   
+					</div>	
+					<div id="opencard-save-close-container">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+						<button id="btn-opencard-submit" class="btn btn-primary">Save</button>
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>

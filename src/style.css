@@ -15,6 +15,36 @@ body {
 }
 
 
+#open-card-description {
+	margin: 1% 4%;
+	text-align: justify;
+}
+
+#opencard-footer {
+
+
+}
+
+#open-card-duedate-assignedto {
+	margin-bottom: 0;
+	font-size: 1em;
+	margin-top: 0.40em;
+}
+
+#open-card-title {
+	font-size: 1.25em;
+}
+
+#opencard-save-close-container {
+	background-color: purple;
+	height: 100%;
+	display: inline-block;
+}
+
+#card-control-container button {
+	display: block;
+}
+
 /* New Task Modal */
 #btn-add-new-task {
 	position: fixed;
