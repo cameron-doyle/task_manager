@@ -36,7 +36,6 @@ body {
 }
 
 #opencard-save-close-container {
-	background-color: purple;
 	height: 100%;
 	display: inline-block;
 }
@@ -80,6 +79,7 @@ body {
 	padding-left: 1em;
 	padding-right: 1em;
 	background-color: #91c6f8;
+	width: 100vw;
 }
 
 #navbar-credit {
@@ -93,18 +93,12 @@ body {
 
 
 
-/* Content */
+/* Content layout */
 #content-container {
 	padding: 5%;
 	flex-direction: row;
 	flex-wrap: wrap;
 	display: flex;
-	/* justify-content: space-between; */
-/* 
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 50px; */
 }
 
 #content-container li {
@@ -139,62 +133,37 @@ body {
     }
 }
 
-/* .card {
-    background: #91c6f8;
-    width: 250px;
-    height: 350px;
-    margin: 10px;
-    border-radius: 15px;
-    
-}
-*/
-.cardImage {
-    height: 250px;
-    margin-bottom: 15px;
-    background-size: cover;
-    border-radius: 15px 15px 0 0;
-    background-color: #91c6f8;
-  
-	
-}
-/*
-.card:hover {
-   background-color: bisque;
-   color: orange;
-   cursor: pointer;
-   transform: scale(1.2);
+/* End content layout */
 
-}
 
-*/
 
-#container .card-header h3{
-     display: inline-block;
-}
+/* Card design */
 
-#container .card-header p{
+#content-container .card-header p,
+#content-container .card-footer p
+{
 	display: inline-block;
 	float: right;
+	font-size: 1em;
+	margin: auto;
 }
-#container .card-body {
 
-}
-#container .card-footer h5{
+#content-container .card-footer h5,
+#content-container .card-header h3
+{
 	display: inline-block;
-
+	float: left;
+	font-size: 1em;
+	margin: auto;
+	margin-top: .17em; /* Fix poor height alignment */
 }
 
-#container .card-footer p{
-	display: inline-block;
-	float: right;
-
+#content-container .card-body p{
+	text-align: justify;
+	font-size: .9em;
 }
-h2 {
-    text-align: center;
-    margin-top: 35px;
-} */
+/* End Card Design */
 
-/* End content */
 
 /* Mobile view */
 @media only screen and (max-width: 500px) {
