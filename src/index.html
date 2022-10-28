@@ -39,7 +39,6 @@
 	</nav>
 
 	<!-- Assigned to: Declan -->
-	<!-- TODO: Convert to bootstrap rows/cols -->
 	<!-- TODO: Implement card design (reference wireframe's "Display Card") -->
 	<!-- TODO: Change card width/height ratio to 4:3 (landscape is better for reading) -->
 	<!-- 
@@ -47,97 +46,17 @@
 		 https://getbootstrap.com/docs/4.0/layout/grid/
 		 https://getbootstrap.com/docs/4.0/components/card/
 	 -->
-<!-- 	 <ul id="content-container" class="list-group">
-		<li id="card-container" class="list-group-item"> -->
 	<ul id="content-container" class="list-group">
-		<li id="card-container" class="list-group-item">
-			<div class="card">
-				<div class="card-header">This is header</div>
-				<div class="card-body">This is body</div>
-				<div class="card-footer">This is footer</div>
-			</div>
-		</li>
-		<li id="card-container" class="list-group-item">
-			<div class="card">
-				<div class="card-header">This is header</div>
-				<div class="card-body">This is body</div>
-				<div class="card-footer">This is footer</div>
-			</div>
-		</li><li id="card-container" class="list-group-item">
-			<div class="card">
-				<div class="card-header">This is header</div>
-				<div class="card-body">This is body</div>
-				<div class="card-footer">This is footer</div>
-			</div>
-		</li><li id="card-container" class="list-group-item">
-			<div class="card">
-				<div class="card-header">This is header</div>
-				<div class="card-body">This is body</div>
-				<div class="card-footer">This is footer</div>
-			</div>
-		</li><li id="card-container" class="list-group-item">
-			<div class="card">
-				<div class="card-header">This is header</div>
-				<div class="card-body">This is body</div>
-				<div class="card-footer">This is footer</div>
-			</div>
-		</li><li id="card-container" class="list-group-item">
-			<div class="card">
-				<div class="card-header">This is header</div>
-				<div class="card-body">This is body</div>
-				<div class="card-footer">This is footer</div>
-			</div>
-		</li><li id="card-container" class="list-group-item">
-			<div class="card">
-				<div class="card-header">This is header</div>
-				<div class="card-body">This is body</div>
-				<div class="card-footer">This is footer</div>
-			</div>
+		<li class="list-group-item">
+			<button data-bs-toggle="modal" data-bs-target="#modalthing">
+				<div class="card">
+					<div class="card-header">This is header</div>
+					<div class="card-body">This is body</div>
+					<div class="card-footer">This is footer</div>
+				</div>
+			</button>
 		</li>
 	 </ul>
-<!-- 	<section class="container">
-		<div class="card">
-			<div class="cardImage task1"></div>
-			<h2>Card 1</h2>
-		</div>
-
-		<div class="card">
-			<div class="cardImage task2"></div>
-			<h2>Card 2</h2>
-		</div>
-
-		<div class="card">
-			<div class="cardImage task3"></div>
-			<h2>Card 3</h2>
-		</div>
-
-		<div class="card">
-			<div class="cardImage task4"></div>
-			<h2>Card 4</h2>
-		</div>
-	</section>
-
-	<section class="container">
-		<div class="card">
-			<div class="cardImage task1"></div>
-			<h2>Card 5</h2>
-		</div>
-
-		<div class="card">
-			<div class="cardImage task2"></div>
-			<h2>Card 6</h2>
-		</div>
-
-		<div class="card">
-			<div class="cardImage task3"></div>
-			<h2>Card 7</h2>
-		</div>
-
-		<div class="card">
-			<div class="cardImage task4"></div>
-			<h2>Card 8</h2>
-		</div>
-	</section> -->
 
 	<!-- Assigned to: Cameron -->
 	<button id="btn-add-new-task" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-task">
@@ -189,16 +108,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-	<!-- Assigned to: Tamika -->
-	<!-- "Open Card" modal -->
-    <button id="btn-add-new-opencard" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalthing">
-        Add Task 
-		<span class="material-symbols-outlined">add</span>
-    </button>
-
 
 	<div class="modal fade" id="modalthing" tabindex="-1" role="form" aria-labelledby="open-card-title" aria-hidden="true">
 		<div class="modal-dialog" role="document">
