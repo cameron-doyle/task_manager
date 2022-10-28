@@ -15,14 +15,29 @@ body {
 }
 
 
+/* Navbar */
+#nav{
+	padding-left: 1em;
+	padding-right: 1em;
+	background-color: #91c6f8;
+	width: 100vw;
+}
+
+#navbar-credit {
+	margin-left: 1em;
+}
+
+#navbar-github {
+	margin-left: auto;
+}
+/* End navbar */
+
+
+
+/* Open card */
 #open-card-description {
 	margin: 1% 4%;
 	text-align: justify;
-}
-
-#opencard-footer {
-
-
 }
 
 #open-card-duedate-assignedto {
@@ -35,14 +50,36 @@ body {
 	font-size: 1.25em;
 }
 
-#opencard-save-close-container {
-	height: 100%;
+#opencard-footer {
+	justify-content: space-between;
+}
+
+#card-control-container {
 	display: inline-block;
+}
+
+#opencard-save-close-container {
+	height: 6.5em;
+	width: 8.75em; /* Change this to increase or decrease the margin between the close and open button */
+	display: inline-block;
+	position: relative;
+}
+
+#opencard-save-close-container button {
+	position: absolute;
+	bottom: 0;
+}
+
+#btn-opencard-submit {
+	right: 0;
 }
 
 #card-control-container button {
 	display: block;
+	margin-bottom: .5em;
 }
+/* End open card */
+
 
 /* New Task Modal */
 #btn-add-new-task {
@@ -74,25 +111,6 @@ body {
 
 
 
-/* Navbar */
-#nav{
-	padding-left: 1em;
-	padding-right: 1em;
-	background-color: #91c6f8;
-	width: 100vw;
-}
-
-#navbar-credit {
-	margin-left: 1em;
-}
-
-#navbar-github {
-	margin-left: auto;
-}
-/* End navbar */
-
-
-
 /* Content layout */
 #content-container {
 	padding: 5%;
@@ -108,6 +126,8 @@ body {
 	box-sizing: border-box;
 	margin: 1rem .25em;
 	border: none;
+	/* height: 15em; */
+	/* background-color: red; */
 }
 
 #content-container button {
