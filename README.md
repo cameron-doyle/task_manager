@@ -1,5 +1,4 @@
 <h1>Task Manager for Generation Australia</h1>
-<sub style="font-size: 14px; font-weight: normal; color: gray; margin-top: -15px;">This is the final group project for Generation Australia</sub>
 
 <h2>Information</h2>
 Live Site: https://cameron-doyle.github.io/task_manager/src/index.html
