@@ -5,6 +5,7 @@
 	border: 0;
 } 
 
+
 .clear::after {
 	float: none;
 	clear: both;
@@ -20,7 +21,7 @@ body {
 	padding-left: 1em;
 	padding-right: 1em;
 	background-color: #91c6f8;
-	width: 100vw;
+	width: 100%;
 }
 
 #navbar-credit {
@@ -109,11 +110,9 @@ body {
 }
 /* End new task modal */
 
-
-
 /* Content layout */
 #content-container {
-	padding: 5%;
+	padding: 1% 5%;
 	flex-direction: row;
 	flex-wrap: wrap;
 	display: flex;
@@ -126,15 +125,10 @@ body {
 	box-sizing: border-box;
 	margin: 1rem .25em;
 	border: none;
-	/* height: 15em; */
-	/* background-color: red; */
+	max-width: 100%;
 }
 
-#content-container button {
-	width: 100%;
-}
-
-/* Calculates the cards max width based on screen size */
+/* Calculates card width for different screen sizes */
 @media screen and (min-width: 40em) {
     #content-container li {
        max-width: calc(50% -  1em);
@@ -186,7 +180,7 @@ body {
 
 
 /* Mobile view */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
 	/* Please do the mobile design first! */
 
 	/* New task button size */
@@ -199,5 +193,6 @@ body {
 	#new-task textarea{
 		height: 13em;
 	}
+
 }
 /* Don't put code below here, non mobile code must come before the @media query */
