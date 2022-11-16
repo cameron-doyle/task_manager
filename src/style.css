@@ -52,6 +52,11 @@ body {
 	font-size: 1.25em;
 }
 
+#open-card .modal-body{
+	max-height: 25em;
+	overflow-y: auto;
+}
+
 #opencard-footer {
 	justify-content: space-between;
 }
@@ -115,7 +120,7 @@ body {
 
 /* Content layout */
 #content-container {
-	padding: 1% 5%;
+	padding: 3% 5%;
 	flex-direction: row;
 	flex-wrap: wrap;
 	display: flex;
@@ -182,7 +187,7 @@ body {
 }
 
 .card-body {
-	height: 8.8em; /* Seems like a good size to avoid "spawning" the scroll bar */
+	height: 13em;
 	overflow-y: auto;
 }
 
