@@ -111,6 +111,8 @@ body {
 }
 /* End new task modal */
 
+
+
 /* Content layout */
 #content-container {
 	padding: 1% 5%;
@@ -134,12 +136,15 @@ body {
     #content-container li {
        max-width: calc(50% -  1em);
     }
+
+
 }
  
 @media screen and (min-width: 50em) {
     #content-container li {
         max-width: calc(33.33% - 1em);
     }
+
 }
 
 @media screen and (min-width: 70em) {
@@ -153,6 +158,9 @@ body {
 
 
 /* Card design */
+.card{
+	height: 100%;
+}
 
 #content-container .card-header p,
 #content-container .card-footer p
@@ -173,9 +181,16 @@ body {
 	margin-top: .17em; /* Fix poor height alignment */
 }
 
+.card-body {
+	height: 8.8em; /* Seems like a good size to avoid "spawning" the scroll bar */
+	overflow-y: auto;
+}
+
 #content-container .card-body p{
 	text-align: justify;
 	font-size: .9em;
+	max-height: 100%;
+
 }
 /* End Card Design */
 
@@ -193,6 +208,11 @@ body {
 	/* New task textarea height */
 	#new-task textarea{
 		height: 13em;
+	}
+
+	.card-body {
+		height: auto;
+		overflow-y: none;
 	}
 
 }
