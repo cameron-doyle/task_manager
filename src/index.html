@@ -21,6 +21,8 @@
 	<link rel="stylesheet" href="style.css">
 	<title>Document</title>
 
+	<script src="./main.js"></script>
+
 	<!-- Scrip "runs" after html has laoded (prevents errors) -->
 <!-- 	<script defer>
 
@@ -204,18 +206,21 @@
 				<div class="modal-body">
 					<form id="frm-new-task" action="#" method="post">
 						<label for="txt-new-task-name" class="form-label">Name</label>
-						<input required type="text" autocomplete="off" name="txt-task-name" id="txt-new-task-name" class="form-control" pattern="^[a-zA-Z0-9]{1,}$">
+						<input required type="text" autocomplete="off" name="txt-task-name" id="txt-new-task-name" class="form-control"
+						value="Testnam_9">
 
 						<label for="txt-new-task-description" class="form-label">Description</label>
-						<textarea required name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10" autocomplete="off" class="form-control"></textarea>
+						<textarea required name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10" autocomplete="off" class="form-control">This is 16 chars</textarea>
 
 						<label for="txt-new-task-assigned-to" class="form-label">Assign To</label>
-						<input required type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to" class="form-control" pattern="^[a-zA-Z0-9]{1,}$">
+						<input required type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to" class="form-control"
+						value="Testing_9">
 
 						<div class="row">
 							<div class="col-6">
 								<label for="ds-task-due-date" class="form-label">Due Date</label>
-								<input required type="date" name="ds-task-due-date" id="ds-task-due-date" class="form-control">
+								<input required type="date" name="ds-task-due-date" id="ds-task-due-date" class="form-control"
+								value="2022-11-29">
 							</div>
 							<div class="col-6">
 								<label for="txt-new-task-status" class="form-label">Status</label>
