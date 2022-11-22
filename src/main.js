@@ -35,7 +35,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		//? Due Date Validation (hard): Cameron
 		/* Not Empty and not less than current date */
-
+		const dueDate = document.getElementById("ds-task-due-date")
+		let date = new Date(field.value);
+		console.log(date)
 
 	});
 });
