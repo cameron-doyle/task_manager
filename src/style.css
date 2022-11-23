@@ -23,6 +23,10 @@ body {
 	padding-right: 1em;
 	background-color: #91c6f8;
 	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
 }
 
 #navbar-credit {
@@ -31,6 +35,12 @@ body {
 
 #navbar-github {
 	margin-left: auto;
+	line-height: 0; /* Fixes sizing issue */
+	padding: .3em;
+}
+
+#github{
+	height: 1.6em;
 }
 /* End navbar */
 
@@ -199,6 +209,22 @@ body {
 }
 /* End Card Design */
 
+/* Sprint 2 */
+#current-date-container {
+	position: fixed;
+	bottom: -0.2em;
+	left: -0.2em;
+	margin: 0;
+
+	border-radius: 5px;
+	padding: .2em .5em;
+	background-color: #F7F7F7;
+	border: 1px solid #D2D2D2;
+}
+
+#current-date-container p{
+	margin: 0;
+}
 
 /* Mobile view */
 @media only screen and (max-width: 600px) {
