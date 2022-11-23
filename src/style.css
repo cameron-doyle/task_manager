@@ -221,4 +221,12 @@ body {
 	}
 
 }
+
+/* description form area*/
+.form-control {
+    margin: 0 auto; 
+    margin-bottom: 5px;
+    margin-top: 5px;
+    max-width: 700px;
+}
 /* Don't put code below here, non mobile code must come before the @media query */
