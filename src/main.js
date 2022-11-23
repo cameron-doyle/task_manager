@@ -33,6 +33,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		//? Description Validation (easy): Declan
 		/* Not Empty and longer than 15 characters */
+		const taskDescription = document.querySelector('#txt-new-task-description');
+        let taskDescriptionValue = taskDescription.value;
+
+		if (taskDescriptionValue.length <= 15) {
+			taskDescription.classList.add("is-valid");
+			taskDescription.classList.remove("is-invalid");
+			return 
+		  } 
 
 
 		//? Assign To Validation (easy): Tamika
