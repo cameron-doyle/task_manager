@@ -23,7 +23,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		
 		//? Name Validation (easy): James
 		/* Not Empty and longer than 8 characters */
-
+		const nameField = document.getElementById("txt-new-task-name")
+		console.log(nameField.value)
+		if(nameField.value ==='' || nameField.value.length <=8){
+			e.preventDefault();
+			//Validate in html
+		}
 
 		//? Description Validation (easy): Declan
 		/* Not Empty and longer than 15 characters */
