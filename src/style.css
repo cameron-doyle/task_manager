@@ -226,6 +226,10 @@ body {
 	margin: 0;
 }
 
+.none {
+	display: none;
+}
+
 /* Mobile view */
 @media only screen and (max-width: 600px) {
 	/* Please do the mobile design first! */
