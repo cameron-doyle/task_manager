@@ -148,7 +148,7 @@ body {
 }
 
 /* Calculates card width for different screen sizes */
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 50em) {
     #content-container li {
        max-width: calc(50% -  1em);
     }
@@ -156,14 +156,14 @@ body {
 
 }
  
-@media screen and (min-width: 50em) {
+@media screen and (min-width: 70em) {
     #content-container li {
         max-width: calc(33.33% - 1em);
     }
 
 }
 
-@media screen and (min-width: 70em) {
+@media screen and (min-width: 95em) {
     #content-container li {
         max-width: calc(25% - 1em);
     }
@@ -181,7 +181,6 @@ body {
 #content-container .card-header p,
 #content-container .card-footer p
 {
-	display: inline-block;
 	float: right;
 	font-size: 1em;
 	margin: auto;
@@ -190,7 +189,6 @@ body {
 #content-container .card-footer h5,
 #content-container .card-header h3
 {
-	display: inline-block;
 	float: left;
 	font-size: 1em;
 	margin: auto;
@@ -238,7 +236,7 @@ body {
 }
 
 /* Mobile view */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
 	/* Please do the mobile design first! */
 
 	/* New task button size */
