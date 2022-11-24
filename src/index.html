@@ -295,15 +295,15 @@
 							<label for="txt-new-task-name" class="form-label">Name</label>
 							<input type="text" autocomplete="off" name="txt-new-task-name" id="txt-new-task-name"
 								class="form-control" value="Testnam_9">
-							<span class="valid-feedback">Looking good</span>
+							<span class="none">Looking good</span>
 						</div>
 
 						<div class="form-outline">
 							<!-- Description Container -->
 							<label for="txt-new-task-description" class="form-label">Description</label>
 							<textarea name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10"
-								autocomplete="off" class="form-control" minlength="17">This is 16 chars</textarea>
-							<span class="invalid-feedback">This is text</span>
+								autocomplete="off" class="form-control">This is 16 chars</textarea>
+							<span class="none">This is text</span>
 						</div>
 
 						<div class="form-outline">
@@ -311,7 +311,7 @@
 							<label for="txt-new-task-assigned-to" class="form-label">Assign To</label>
 							<input type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to"
 								class="form-control" value="Testing_9">
-							<span class="invalid-feedback">This is text</span>
+							<span class="none">This is text</span>
 						</div>
 
 						<div class="row">
@@ -437,6 +437,10 @@
 			</div>
 		</div>
 	</div>
+	<span id="current-date-container">
+		<p id="current-time">Loading...</p>
+		<p id="current-date">Loading...</p>
+	</span>
 </body>
 
 </html>

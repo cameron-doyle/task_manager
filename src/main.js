@@ -21,34 +21,42 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("frm-new-task").addEventListener('submit', (e) => {
 		e.preventDefault(); //Prevents the form from sending us to a new page
 		console.log("Form submitted")
-		
+
 		//? Name Validation (easy): James
 		/* Not Empty and longer than 8 characters */
 		const nameField = document.getElementById("txt-new-task-name")
-		console.log(nameField.value)
-		if(nameField.value ==='' || nameField.value.length <=8){
-			e.preventDefault();
+		if (nameField.value === '' || nameField.value.length <= 8) {
+			validationFailed(assignedElement, "Needs to be longer than 8 characters!")
+			return
 			//Validate in html
 		}
 
 		//? Description Validation (easy): Declan
 		/* Not Empty and longer than 15 characters */
 		const taskDescription = document.querySelector('#txt-new-task-description');
-        let taskDescriptionValue = taskDescription.value;
+		let taskDescriptionValue = taskDescription.value;
 
 		if (taskDescriptionValue.length <= 15) {
-			taskDescription.classList.add("is-valid");
-			taskDescription.classList.remove("is-invalid");
-			return 
-		  } 
+			validationFailed(assignedElement, "Needs to be longer than 15 characters!")
+			return
+		}
 
 
-		//? Assign To Validation (easy): Tamika
+		//? Assign To Validation (easy): Cameron (Tamika was absent)
 		/* Not Empty and longer than 8 characters */
+		const assignedElement = document.getElementById("txt-new-task-assigned-to")
+		if(assignedElement.value === '' || assignedElement.value.length <= 8){
+			validationFailed(assignedElement, "Needs to be longer than 8 characters!")
+			return
+		}
+
+		/* Validate Status */
+
 
 
 		//? Due Date Validation (hard): Cameron
 		/* Not Empty and not less than current date */
+
 		//Date object saved seperately in case of error
 		const dsDueDateElement = document.getElementById("ds-task-due-date");
 
@@ -57,9 +65,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		let currentDate = new Date();
 
 		//If date is "less than current date" throw error
-		if(date < currentDate){
-			validationFailed(dsDueDateElement, "The due date needs to be at least one day ahead of the current date.");
-			return;
+		if (date < currentDate) {
+			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
+			return
 		}
 
 		//TODO: Save form
@@ -67,13 +75,13 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 	//Marks a form to be invalid
-	function validationFailed(inputElement, message){
+	function validationFailed(inputElement, message) {
 		const messageTarget = inputElement.parentNode.getElementsByClassName("alert-danger")[0];
 		messageTarget.innerHTML = `<p>${message}</p>`
 	}
 
 	//updates the time
-	function updateTime(){
+	function updateTime() {
 		const date = new Date();
 		const timeElement = document.getElementById("current-time");
 		const dateElement = document.getElementById("current-date");
@@ -84,29 +92,29 @@ window.addEventListener('DOMContentLoaded', () => {
 		//Set date
 		dateElement.textContent = `${
 			//Prepends a 0 if the day is less than 10.
-			(date.getDay() < 10) ? `0${date.getDay()}`:date.getDay()
-		}/${
+			(date.getDay() < 10) ? `0${date.getDay()}` : date.getDay()
+			}/${
 			//Prepends a 0 if month is less than 10
-			(date.getMonth() < 10) ? `0${date.getMonth()}`:date.getMonth()
-		}/${date.getFullYear()}`
+			(date.getMonth() < 10) ? `0${date.getMonth()}` : date.getMonth()
+			}/${date.getFullYear()}`
 	}
 
 	//A fucntion that formats 24 hour time into 12 hour time
-	function formatTime(seconds = false, date = new Date()){
+	function formatTime(seconds = false, date = new Date()) {
 		return `${
 			//Convert 24 hour to 12 hour
-			(date.getHours() > 12) ? date.getHours()-12:date.getHours()
-		}:${
+			(date.getHours() > 12) ? date.getHours() - 12 : date.getHours()
+			}:${
 			//Prepend a 0 if minutes is less than 10
-			(date.getMinutes() < 10) ? `0${date.getMinutes()}`:date.getMinutes()
-		}${
+			(date.getMinutes() < 10) ? `0${date.getMinutes()}` : date.getMinutes()
+			}${
 			//If seconds is desired, get seconds and prepend a 0 if less than 10, otherwise return seconds
-			(seconds) ? `${(date.getSeconds() < 10) ? `:0${date.getSeconds()}`:`:${date.getSeconds()}`}`:''
-		}${
+			(seconds) ? `${(date.getSeconds() < 10) ? `:0${date.getSeconds()}` : `:${date.getSeconds()}`}` : ''
+			}${
 			//If (in 24 hours) 12 or past 12, set to pm, otherwise am
-			(date.getHours() >= 12) ? 'pm':'am'
-		}`;
+			(date.getHours() >= 12) ? 'pm' : 'am'
+			}`;
 	}
 
-	const timer = setInterval(updateTime, 1000) //If showing seconds, change this to be lower (like 5ms)
+	setInterval(updateTime, 1000) //If showing seconds, change this to be lower (like 5ms)
 });
