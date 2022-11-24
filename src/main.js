@@ -23,6 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("frm-new-task").addEventListener('submit', (e) => {
 		e.preventDefault(); //Prevents the form from sending us to a new page
 		console.log("Form submitted")
+		clearValidation();
 		let wasError = false;
 
 		//? Name Validation (easy): James
@@ -105,8 +106,9 @@ window.addEventListener('DOMContentLoaded', () => {
 			date,
 			statusElement.value
 		);
-
-		//TODO: close modal
+		
+		//Closes modal by firing click event on the close button
+		document.getElementById("btn-new-task-cancel").click()
 	});
 
 	//Marks a form to be invalid
@@ -114,6 +116,15 @@ window.addEventListener('DOMContentLoaded', () => {
 		const messageTarget = inputElement.parentElement.getElementsByTagName("span")[0];
 		messageTarget.innerHTML = `${message}`
 		messageTarget.classList = "inputError"
+	}
+
+	function clearValidation(){
+		const errorTarget = document.querySelectorAll(".inputError")
+		if(errorTarget.length > 0){
+			errorTarget.forEach(target => {
+				target.classList = "none"
+			});
+		}
 	}
 
 	//updates the time
