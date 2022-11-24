@@ -24,6 +24,9 @@ class TaskManager{
 
 	/* getAllTasks(): (easy): James */
 	/* returns a list (array) of all tasks */
+	 getAllTasks() {
+		return taskList
+	}
 
 	/* getTasksWithStatus(status) (Hard): Declan */
 	/* returns a list (array) of all tasks where a status is equal to the status passes as an argument */
