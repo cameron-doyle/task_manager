@@ -26,6 +26,15 @@ class TaskManager{
 	/* returns a list (array) of all tasks */
 
 	/* getTasksWithStatus(status) (Hard): Declan */
+	getTasksWithStatus (status) {
+		let newTaskList = [];
+		this.taskList.forEach(task => {
+			if(task.Status === status)
+			newTaskList.push(task)
+			
+		});
+	return newTaskList
+	}
 	/* returns a list (array) of all tasks where a status is equal to the status passes as an argument */
 
 	/* addTask(task) (Medium): Cameron */
