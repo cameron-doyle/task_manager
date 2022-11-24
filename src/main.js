@@ -1,6 +1,8 @@
 console.log("Script loaded");
+
 window.addEventListener('DOMContentLoaded', () => {
 	updateTime(); //Technically I'm making a date object as soon as the page loads.
+	const ts = new TaskManager();
 	/* TASK 4 - Validate form inputs */
 	/*  - All form fields are validated on form submission(Name, Description, AssignedTo, DueDate, Status).
 		- A meaningful error message is displayed when a form field is invalid.
@@ -51,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		/* Validate Status */
-
+		const statusElement = document.getElementById("txt-new-task-status")
 
 
 		//? Due Date Validation (hard): Cameron
@@ -61,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		const dsDueDateElement = document.getElementById("ds-task-due-date");
 
 		//Get dates to compare
-		let date = dsDueDateElement.valueAsDate;
+		const date = dsDueDateElement.valueAsDate;
 		let currentDate = new Date();
 
 		//If date is "less than current date" throw error
@@ -71,7 +73,14 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		//TODO: Save form
-
+		//TODO: Bug with due date
+		ts.addTask(
+			nameField.value,
+			taskDescription.value,
+			assignedElement.value,
+			date,
+			statusElement.value
+		);
 	});
 
 	//Marks a form to be invalid
