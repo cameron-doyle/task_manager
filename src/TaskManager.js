@@ -36,6 +36,7 @@ class TaskManager{
 		const id = this.#taskList.length;
 		this.#taskList.push(taskObjFactory(id, name, description, assignedTo, dueDate, status));
 		//Call render()
+		//Don't mind me
 	}
 
 
