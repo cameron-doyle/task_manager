@@ -24,7 +24,7 @@ class TaskManager{
 
 	/* getAllTasks(): (easy): James */
 	/* returns a list (array) of all tasks */
-	 getAllTasks() {
+	getAllTasks() {
 		return taskList
 	}
 
@@ -34,9 +34,8 @@ class TaskManager{
 		this.taskList.forEach(task => {
 			if(task.Status === status)
 			newTaskList.push(task)
-			
 		});
-	return newTaskList
+		return newTaskList
 	}
 	/* returns a list (array) of all tasks where a status is equal to the status passes as an argument */
 
@@ -82,6 +81,24 @@ class TaskManager{
 	createTaskHTML(taskObj){
 		//Html template literals
 		let date = taskObj.DueDate;
+		let status = taskObj.Status;
+		switch (status) {
+			case "todo":
+				status = "To Do"
+				break;
+			case "inprogress":
+				status = "In Progress"
+				break;
+			case "review":
+				status = "Review"
+				break;
+			case "complete":
+				status = "Complete"
+				break;
+		
+			default:
+				throw new Error("Bad status in taskObj")
+		}
 		return `<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
 				<div class="card-header">
 					<h3>${taskObj.Name}</h3>
@@ -92,13 +109,13 @@ class TaskManager{
 				</div>
 
 				<div class="card-footer">
-					<h5>${taskObj.Status}</h5>
+					<h5>${status}</h5>
 					<p>${ //Due Date
 						//Prepends a 0 if the day is less than 10.
-						(date.getDay() < 10) ? `0${date.getDay()}` : date.getDay()
+						(date.getDate() < 10) ? `0${date.getDate()}` : date.getDate()
 						}/${
 						//Prepends a 0 if month is less than 10
-						(date.getMonth() < 10) ? `0${date.getMonth()}` : date.getMonth()
+						(date.getMonth() + 1 < 10) ? `0${date.getMonth() + 1}` : date.getMonth() + 1
 						}/${date.getFullYear()}</p>
 				</div>
 			</div>`

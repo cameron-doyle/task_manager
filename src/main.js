@@ -23,13 +23,15 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("frm-new-task").addEventListener('submit', (e) => {
 		e.preventDefault(); //Prevents the form from sending us to a new page
 		console.log("Form submitted")
+		clearValidation();
+		let wasError = false;
 
 		//? Name Validation (easy): James
 		/* Not Empty and longer than 8 characters */
 		const nameField = document.getElementById("txt-new-task-name")
 		if (nameField.value === '' || nameField.value.length <= 8) {
-			validationFailed(assignedElement, "Needs to be longer than 8 characters!")
-			return
+			validationFailed(nameField, "Needs to be longer than 8 characters!")
+			wasError = true;
 			//Validate in html
 		}
 
@@ -39,8 +41,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		let taskDescriptionValue = taskDescription.value;
 
 		if (taskDescriptionValue.length <= 15) {
-			validationFailed(assignedElement, "Needs to be longer than 15 characters!")
-			return
+			validationFailed(taskDescription, "Needs to be longer than 15 characters!")
+			wasError = true;
 		}
 
 
@@ -49,11 +51,32 @@ window.addEventListener('DOMContentLoaded', () => {
 		const assignedElement = document.getElementById("txt-new-task-assigned-to")
 		if(assignedElement.value === '' || assignedElement.value.length <= 8){
 			validationFailed(assignedElement, "Needs to be longer than 8 characters!")
-			return
+			wasError = true;
 		}
 
 		/* Validate Status */
 		const statusElement = document.getElementById("txt-new-task-status")
+		
+		//It get's the job done
+		switch (statusElement.value) {
+			case "todo":
+				//Valid value
+				break;
+			case "inprogress":
+				//Valid value
+				break;
+			case "review":
+				//Valid value
+				break;
+			case "complete":
+				//Valid value
+				break;
+		
+			default:
+				validationFailed(statusElement, "Please select a valid status!");
+				wasError = true;
+				break;
+		}
 
 
 		//? Due Date Validation (hard): Cameron
@@ -69,11 +92,13 @@ window.addEventListener('DOMContentLoaded', () => {
 		//If date is "less than current date" throw error
 		if (date < currentDate) {
 			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
-			return
+			wasError = true;
 		}
 
-		//TODO: Save form
-		//TODO: Bug with due date
+		//If there was an error, return.
+		if(wasError) return
+			
+
 		ts.addTask(
 			nameField.value,
 			taskDescription.value,
@@ -81,30 +106,39 @@ window.addEventListener('DOMContentLoaded', () => {
 			date,
 			statusElement.value
 		);
+		
+		//Closes modal by firing click event on the close button
+		document.getElementById("btn-new-task-cancel").click()
 	});
 
 	//Marks a form to be invalid
 	function validationFailed(inputElement, message) {
-		const messageTarget = inputElement.parentNode.getElementsByClassName("alert-danger")[0];
-		messageTarget.innerHTML = `<p>${message}</p>`
+		const messageTarget = inputElement.parentElement.getElementsByTagName("span")[0];
+		messageTarget.innerHTML = `${message}`
+		messageTarget.classList = "inputError"
+	}
+
+	function clearValidation(){
+		const errorTarget = document.querySelectorAll(".inputError")
+		if(errorTarget.length > 0){
+			errorTarget.forEach(target => {
+				target.classList = "none"
+			});
+		}
 	}
 
 	//updates the time
 	function updateTime() {
 		const date = new Date();
-		const timeElement = document.getElementById("current-time");
-		const dateElement = document.getElementById("current-date");
-
-		//set time
-		timeElement.textContent = `${formatTime()}`;
-
-		//Set date
-		dateElement.textContent = `${
+		const timeElement = document.getElementById("current-date-container");
+		
+		//Set date and time
+		timeElement.innerHTML = `${formatTime()}<br>${
 			//Prepends a 0 if the day is less than 10.
-			(date.getDay() < 10) ? `0${date.getDay()}` : date.getDay()
+			(date.getDate() < 10) ? `0${date.getDate()}` : date.getDate()
 			}/${
 			//Prepends a 0 if month is less than 10
-			(date.getMonth() < 10) ? `0${date.getMonth()}` : date.getMonth()
+			((date.getMonth() + 1) < 10) ? `0${date.getMonth() + 1}` : date.getMonth() + 1
 			}/${date.getFullYear()}`
 	}
 
