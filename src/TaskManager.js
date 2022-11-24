@@ -28,10 +28,15 @@ class TaskManager{
 	/* getTasksWithStatus(status) (Hard): Declan */
 	/* returns a list (array) of all tasks where a status is equal to the status passes as an argument */
 
-	/* addTask(task) (Medium): Cameron */
+	/* addTask(name, etc) (Medium): Cameron */
 	/* Add a task to existing taks list (array)*/
 	/* task argument is a product of taskObjFactory */
 	/* TASK 7: call render() method */
+	addTask(name, description, assignedTo, dueDate, status){
+		const id = this.#taskList.length;
+		this.#taskList.push(taskObjFactory(id, name, description, assignedTo, dueDate, status));
+		//Call render()
+	}
 
 
 	/* TASK 7 */
