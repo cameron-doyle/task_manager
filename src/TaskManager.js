@@ -1,9 +1,18 @@
 
 class TaskManager{
-	/* Array that stores task objects (easy): Cameron */
-	#taskList = [];
-
-	/* Use a factory function for the object creation (Hard): Cameron */
+	#taskList = []; //Array that stores task objects
+	
+	//A status "constant" "enum": Cameron
+	taskStatus () {
+		return {
+			todo: "To Do",
+			inprogress: "In Progress",
+			review: "Review",
+			complete: "Complete"
+		}
+	}
+	
+	//A factory function for the task object creation: Cameron
 	taskObjFactory(id, name, description, assignedTo, dueDate, status) {
 		return {
 			ID: id,
@@ -14,91 +23,81 @@ class TaskManager{
 			Status: status
 		}
 	}
-
-
 	
 	constructor(){
 		//Do stuff in future
 	}
 
-
-	/* getAllTasks(): (easy): James */
-	/* returns a list (array) of all tasks */
+	//Returns am array of all tasks: James
 	getAllTasks() {
-		return taskList
+		return this.#taskList
 	}
 
-	/* getTasksWithStatus(status) (Hard): Declan */
+	//Returns all tasks that are set to a given status: Declan
 	getTasksWithStatus (status) {
 		let newTaskList = [];
-		this.taskList.forEach(task => {
+		this.#taskList.forEach(task => {
 			if(task.Status === status)
-			newTaskList.push(task)
+				newTaskList.push(task)
 		});
 		return newTaskList
 	}
-	/* returns a list (array) of all tasks where a status is equal to the status passes as an argument */
 
-	/* addTask(name, etc) (Medium): Cameron */
-	/* Add a task to existing taks list (array)*/
-	/* task argument is a product of taskObjFactory */
-	/* TASK 7: call render() method */
+	//Gets task by given ID: Cameron
+	getTaskByID(taskID){
+		let result //Holds forEach return value
+		this.#taskList.forEach(task => {
+			if(task.ID === taskID) {
+				result = task;
+				return
+			}
+		});
+		return result;
+	}
+
+	//Adds a task with a unique ID to the taskList: Camerion
 	addTask(name, description, assignedTo, dueDate, status){
+		//Generates a new ID by getting length.
 		let id = this.#taskList.length
-		//id = (id <= 0) ? 1:id;
-		//id ??= 1;
-		//Bad code, just do length + 1
-		id++;
+		id++; //Offets so the first entry is ID = 1
+
+		//Push new task to the array after genrating taskObj using factory function.
 		this.#taskList.push(this.taskObjFactory(id, name, description, assignedTo, dueDate, status))
+
+		//Renders the DOM
 		this.render()
 	}
 
 
-	/* TASK 7: done as team */
-	/* render() */
-	/* Render both calls the createTaskHTML and displays to DOM */
-	/* Loop through aray and call createTaskHTML for each object and pass object, the add child to card container */
-	/* ul ID: content-container */
+	//Generates the HTML and renders it to the DOM: done as team ("pair" coding)
 	render(){
 		//Get card container
 		const cardContainer = document.getElementById("content-container")
-		cardContainer.innerHTML = '' //Wipe existing cards
 
+		//Wipe existing cards
+		cardContainer.innerHTML = ''
+
+		//Iterate through the taskList and render each card
 		this.#taskList.forEach(task => {
 			//Prepare cardElement
 			let cardElement = document.createElement('li')
 			cardElement.className = "list-group-item"
 			cardElement.id = `task_${task.ID}`
 
-			//Create HTML card and append to ul
+			//Create HTML card and render to DOM
 			cardElement.innerHTML = this.createTaskHTML(task)
 			cardContainer.appendChild(cardElement)
 		})
 	}
 
-	/* createTaskHTML */
-	/* Takes an JSON object as an argument and spits out a card html with data */
+	//Generates the card HTML with data for a given taskObj */
 	createTaskHTML(taskObj){
-		//Html template literals
-		let date = taskObj.DueDate;
-		let status = taskObj.Status;
-		switch (status) {
-			case "todo":
-				status = "To Do"
-				break;
-			case "inprogress":
-				status = "In Progress"
-				break;
-			case "review":
-				status = "Review"
-				break;
-			case "complete":
-				status = "Complete"
-				break;
 		
-			default:
-				throw new Error("Bad status in taskObj")
-		}
+		//Formats status to be consistent with the "add task" form
+		let status = this.taskStatus()[taskObj.Status];
+		//TODO: sort task by due date
+
+		//Inject and format data into card html and return.
 		return `<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
 				<div class="card-header">
 					<h3>${taskObj.Name}</h3>
@@ -112,12 +111,27 @@ class TaskManager{
 					<h5>${status}</h5>
 					<p>${ //Due Date
 						//Prepends a 0 if the day is less than 10.
-						(date.getDate() < 10) ? `0${date.getDate()}` : date.getDate()
+						(taskObj.DueDate.getDate() < 10) ? `0${taskObj.DueDate.getDate()}` : taskObj.DueDate.getDate()
 						}/${
 						//Prepends a 0 if month is less than 10
-						(date.getMonth() + 1 < 10) ? `0${date.getMonth() + 1}` : date.getMonth() + 1
-						}/${date.getFullYear()}</p>
+						(taskObj.DueDate.getMonth() + 1 < 10) ? `0${taskObj.DueDate.getMonth() + 1}` : taskObj.DueDate.getMonth() + 1
+						}/${taskObj.DueDate.getFullYear()}</p>
 				</div>
 			</div>`
+	}
+
+	//Renders the open card: Cameron
+	renderCard(taskObj){
+		//Get elements
+		const taskName = document.getElementById("open-card-title")
+		const ddat = document.getElementById("open-card-duedate-assignedto") //Merged into one element
+		const description = document.getElementById("open-card-description")
+		const status = document.getElementById("opencard-status")
+
+		//Set data
+		taskName.textContent = taskObj.Name
+		ddat.textContent = `${taskObj.AssignedTo} - ${taskObj.DueDate.getDate()}/${taskObj.DueDate.getMonth() + 1}/${taskObj.DueDate.getYear()}`
+		description.textContent = taskObj.Description
+		status.value = taskObj.Status
 	}
 }
