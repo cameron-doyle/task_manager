@@ -106,8 +106,8 @@ body {
 /* New Task Modal */
 #btn-add-new-task {
 	position: fixed;
-	bottom: 0.8em;
-	right: 0.8em;
+	bottom: 1.25em;
+	right: 1.25em;
 	padding: 0;
 }
 
@@ -137,11 +137,16 @@ body {
 	/* Makes scroll bar the same height as the content, instread of being next to the nav as well */
 	height: calc(100vh - var(--nav-height));
 	overflow-y: auto;
+	overflow-x: clip;
 
 	padding: 3% 5%;
+	padding-bottom: 4em; /* Prevents the button and clock from blocking the last card in mobile */
 	flex-direction: row;
 	flex-wrap: wrap;
 	display: flex;
+
+	/* Space Theme */
+	
 }
 
 #content-container li {
@@ -255,9 +260,14 @@ form span {
 	/* Please do the mobile design first! */
 
 	/* New task button size */
+	#btn-add-new-task {
+		bottom: .75em;
+		right: .75em;
+	}
+
 	#btn-add-new-task span {
-		margin: 0.2em;
-		font-size: 3em;
+		margin: 0.3em;
+		font-size: 2em;
 	}
 
 	/* New task textarea height */
