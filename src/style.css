@@ -119,7 +119,7 @@ body {
 
 #new-task label
 {
-	margin-top: 1.0em;
+	margin-top: .25em;
 }
 
 #btn-new-task-reset {
@@ -225,14 +225,22 @@ body {
 	margin: 0;
 }
 
-.none {
-	display: none;
-}
-
-.inputError{
+form span {
+	transition: height 250ms ease-in-out, top 250ms ease-in-out;
+	top: 0;
+	overflow: hidden;
+	display: inline-block;
+	height: 1.4em;
 	color: #e00909;
 	font-weight: bold;
 	font-size: .75em;
+	position: relative;
+
+}
+
+.none {
+	height: 0;
+	top: -1.25em;
 }
 
 /* Mobile view */
@@ -253,7 +261,6 @@ body {
 	.card-body {
 		overflow-y: hidden;
 	}
-
 }
 
 /* Don't put code below here, non mobile code must come before the @media query */

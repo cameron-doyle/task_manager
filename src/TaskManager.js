@@ -130,7 +130,7 @@ class TaskManager{
 
 		//Set data
 		taskName.textContent = taskObj.Name
-		ddat.textContent = `${taskObj.AssignedTo} - ${taskObj.DueDate.getDate()}/${taskObj.DueDate.getMonth() + 1}/${taskObj.DueDate.getYear()}`
+		ddat.textContent = `${taskObj.AssignedTo} - ${taskObj.DueDate.getDate()}/${taskObj.DueDate.getMonth() + 1}/${taskObj.DueDate.getFullYear()}`
 		description.textContent = taskObj.Description
 		status.value = taskObj.Status
 	}

@@ -18,11 +18,11 @@
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 	<!-- Our css -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="./src/style.css">
 	<title>Document</title>
 
-	<script src="./TaskManager.js"></script>
-	<script src="./main.js"></script>
+	<script src="./src/TaskManager.js"></script>
+	<script src="./src/main.js"></script>
 
 	<!-- Scrip "runs" after html has laoded (prevents errors) -->
 	<!-- 	<script defer>
@@ -35,10 +35,10 @@
 	<nav id="nav" class="navbar">
 		<!-- the nav -->
 		<a class="navbar-brand" href="title">
-			<img src="logo.png" width="30" height="30" alt="logo">
+			<img src="./src/logo.png" width="30" height="30" alt="logo">
 		</a>
 		<a class="btn btn-light navbar-item" id="navbar-github" href="https://github.com/cameron-doyle/task_manager" target="_blank">
-			<img id="github" src="./github.png" alt="#">
+			<img id="github" src="./src/github.png" alt="#">
 		</a>
 	</nav>
 
@@ -53,10 +53,6 @@
 
 
 	<ul id="content-container" class="list-group">
-
-
-
-
 		<li class="list-group-item">
 			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
 				<div class="card-header">
@@ -243,7 +239,7 @@
 							<!-- Name Container -->
 							<label for="txt-new-task-name" class="form-label">Name</label>
 							<input type="text" autocomplete="off" name="txt-new-task-name" id="txt-new-task-name"
-								class="form-control" value="Testnam_9">
+								class="form-control">
 							<span class="none">Error message</span>
 						</div>
 
@@ -251,7 +247,7 @@
 							<!-- Description Container -->
 							<label for="txt-new-task-description" class="form-label">Description</label>
 							<textarea name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10"
-								autocomplete="off" class="form-control">This is 15 chars</textarea>
+								autocomplete="off" class="form-control"></textarea>
 							<span class="none">Error message</span>
 						</div>
 
@@ -259,7 +255,7 @@
 							<!-- Assigned to Container -->
 							<label for="txt-new-task-assigned-to" class="form-label">Assign To</label>
 							<input type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to"
-								class="form-control" value="Testing_9">
+								class="form-control">
 							<span class="none">Error message</span>
 						</div>
 
@@ -269,7 +265,7 @@
 									<!-- Due Date Container -->
 									<label for="ds-task-due-date" class="form-label">Due Date</label>
 									<input type="date" name="ds-task-due-date" id="ds-task-due-date"
-										class="form-control" value="2022-11-29">
+										class="form-control">
 									<span class="none">Error message</span>
 								</div>
 							</div>
