@@ -5,6 +5,9 @@
 	border: 0;
 } 
 
+:root{
+	--nav-height: 4rem;
+}
 
 .clear::after {
 	float: none;
@@ -24,7 +27,7 @@ body {
 	padding-right: 1em;
 	background-color: #91c6f8;
 	width: 100%;
-	height: 4rem;
+	height: var(--nav-height);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -131,6 +134,10 @@ body {
 
 /* Content layout */
 #content-container {
+	/* Makes scroll bar the same height as the content, instread of being next to the nav as well */
+	height: calc(100vh - var(--nav-height));
+	overflow-y: auto;
+
 	padding: 3% 5%;
 	flex-direction: row;
 	flex-wrap: wrap;
