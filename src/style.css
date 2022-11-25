@@ -16,7 +16,7 @@
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	min-width: 270px;
+	min-width: 350px;
 	padding-top: 4rem;
 }
 
@@ -52,6 +52,7 @@ body {
 
 
 /* Open card */
+
 #open-card-description {
 	margin: 1% 4%;
 	text-align: justify;
@@ -78,22 +79,30 @@ body {
 
 #card-control-container {
 	display: inline-block;
+	width: 30%;
 }
 
 #opencard-save-close-container {
 	height: 6.5em;
-	width: 8.75em; /* Change this to increase or decrease the margin between the close and open button */
-	display: inline-block;
-	position: relative;
+	width: 60%; /* Change this to increase or decrease the margin between the close and open button */
+	display: inline-flex;
+	align-items: flex-end;
+	justify-content: flex-end;
 }
 
 #opencard-save-close-container button {
-	position: absolute;
-	bottom: 0;
+	height: fit-content;
+	margin-left: .5em;
 }
 
-#btn-opencard-submit {
-	right: 0;
+#btn-opencard-mark, #btn-opencard-save {
+	width: 8em;
+	min-width: 8em;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 #card-control-container button {
@@ -133,11 +142,15 @@ body {
 
 
 /* Content layout */
-#content-container {
+#content-scoll {
 	/* Makes scroll bar the same height as the content, instread of being next to the nav as well */
 	height: calc(100vh - var(--nav-height));
 	overflow-y: auto;
 	overflow-x: clip;
+}
+
+#content-container {
+
 
 	padding: 3% 5%;
 	padding-bottom: 4em; /* Prevents the button and clock from blocking the last card in mobile */
@@ -146,7 +159,7 @@ body {
 	display: flex;
 
 	/* Space Theme */
-	
+
 }
 
 #content-container li {

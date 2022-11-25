@@ -4,6 +4,16 @@ window.addEventListener('DOMContentLoaded', () => {
 	updateTime() //Technically I'm making a date object as soon as the page loads.
 	const tm = new TaskManager()
 	
+	/* TASK 10 */
+
+	//? Change button on change (medium): Declan
+	/* 
+		Event: change https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+		ElementID: "opencard-status"
+		Goal: When the Task Status changes and no longer matches the status stored in the taskList (see TaskManager.js line:3), change the button ID from "btn-opencard-mark" to "btn-opencard-save", also change the button innerHTML to "Save". otherwise set the button ID to "btn-opencard-mark" and the innerHTML to "Mark as done"
+		NOTE: there is a new method in TaskManager called "getTaskByID()", it should come in handy
+	*/ 
+
 	//Updates data on card popup: Cameron
 	document.getElementById("content-container").addEventListener("click", (e) => {
 		e.stopPropagation() //Stops the event from "bubbling" past this container
@@ -19,14 +29,14 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		//Extracts task ID
-		const taskID = Number(element.id[element.id.length - 1])
+		const taskID = element.id[element.id.length - 1]
 
 		//Validate taskID
-		if(!(taskID > 0))
+		if(isNaN(taskID) || !(taskID > 0))
 			throw new Error(`TaskID on li element is malformed: taskID = ${taskID}`)
 
-		//Get task by ID
-		const myTask = tm.getTaskByID(taskID);
+		//Get task by ID, converts taskID to number (because it's a typeof string)
+		const myTask = tm.getTaskByID(Number(taskID));
 		
 		//Validate task (checks if task was returned, I know it doesn't have to check the ID, but I wanted to and it doesn the same thing)
 		if(!myTask || myTask.ID !== taskID)
