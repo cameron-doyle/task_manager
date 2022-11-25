@@ -251,8 +251,7 @@ body {
 	}
 
 	.card-body {
-		height: auto;
-		overflow-y: none;
+		overflow-y: hidden;
 	}
 
 }
