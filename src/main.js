@@ -1,87 +1,119 @@
 console.log("Script loaded");
 
 window.addEventListener('DOMContentLoaded', () => {
-	updateTime(); //Technically I'm making a date object as soon as the page loads.
-	const ts = new TaskManager();
-	/* TASK 4 - Validate form inputs */
-	/*  - All form fields are validated on form submission(Name, Description, AssignedTo, DueDate, Status).
-		- A meaningful error message is displayed when a form field is invalid.
-		- The JavaScript code is in a separate file and the file is included in	the HTML page with no errors.
+	updateTime() //Technically I'm making a date object as soon as the page loads.
+	const tm = new TaskManager()
+	
+	//Updates data on card popup: Cameron
+	document.getElementById("content-container").addEventListener("click", (e) => {
+		e.stopPropagation() //Stops the event from "bubbling" past this container
+		let element = e.target
 
-		Details are below:
-		Implement a form that captures the fields required to create a task.
+		//Returns if event was fired on the container
+		if(element === e.currentTarget)
+			return
+		
+		//Navigates up the DOM to find the "li" element which contains the taskID
+		while(element.nodeName !== "LI"){
+			element = element.parentElement
+		}
 
-		Requirements:
-		Create a JavaScript function called “validateTaskForm” that verifies
-		that the inputs inserted by the user in the task form are correct:
-		- Name -> Not Empty and longer than 8 characters
-		- Description -> Not Empty and longer than 15 characters
-		- AssignedTo -> Not Empty and longer than 8 characters
-		- DueDate -> Not Empty and not less than current date */
+		//Extracts task ID
+		const taskID = Number(element.id[element.id.length - 1])
+
+		//Validate taskID
+		if(!(taskID > 0))
+			throw new Error(`TaskID on li element is malformed: taskID = ${taskID}`)
+		
+
+		//Get task by ID
+		const myTask = tm.getTaskByID(taskID);
+		
+		//Validate task (checks if task was returned, I know it doesn't have to check the ID, but I wanted to and it doesn the same thing)
+		if(!myTask || myTask.ID !== taskID)
+			throw new Error("Task does not exist?!")
+		
+		tm.renderCard(myTask)
+
+
+
+		/* div class="modal fade" id="open-card" tabindex="-1" role="form" aria-labelledby="open-card-title"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="open-card-title">Task Name</h5>
+					<p id="open-card-duedate-assignedto">Tamika - 11/12</p>
+				</div>
+
+				<div class="modal-body">
+					<p id="open-card-description">Loading</p>
+				</div>
+
+				<div class="modal-footer" id="opencard-footer">
+					<div id="card-control-container">
+						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+
+						<label for="opencard-status">Status</label>
+						<select class="form-select" name="opencard-status" id="opencard-status">
+							<option value="todo" id="open-card-todo">To Do</option>
+							<option value="inprogress" id="open-card-inprogress">In Progress</option>
+							<option value="review" id="open-card-review">Review</option>
+							<option value="complete" id="open-card-complete">Complete</option>
+						</select>
+					</div>
+
+					<div id="opencard-save-close-container">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button id="btn-opencard-submit" class="btn btn-primary">Save</button>
+					</div>
+				</div> */
+	})
 
 	//Form submit event for add new task
 	document.getElementById("frm-new-task").addEventListener('submit', (e) => {
 		e.preventDefault(); //Prevents the form from sending us to a new page
-		console.log("Form submitted")
-		clearValidation();
-		let wasError = false;
+		clearValidation(); //Removes any error messages already being displayed
+		let wasError = false; //Boolean used to detect if there was an error (allows for all form inputs to be validated at once)
 
-		//? Name Validation (easy): James
-		/* Not Empty and longer than 8 characters */
+		//? Name Validation: James
+		//Checks if input is empty or less than 9 characters
 		const nameField = document.getElementById("txt-new-task-name")
-		if (nameField.value === '' || nameField.value.length <= 8) {
+		if (nameField.value == '' || nameField.value.length <= 8) {
 			validationFailed(nameField, "Needs to be longer than 8 characters!")
 			wasError = true;
 			//Validate in html
 		}
 
-		//? Description Validation (easy): Declan
-		/* Not Empty and longer than 15 characters */
+		//? Description Validation: Declan
 		const taskDescription = document.querySelector('#txt-new-task-description');
-		let taskDescriptionValue = taskDescription.value;
 
-		if (taskDescriptionValue.length <= 15) {
+		//Checks if input is empty or less than 16 characters
+		if (taskDescription.value == '' || taskDescription.value.length <= 15) {
 			validationFailed(taskDescription, "Needs to be longer than 15 characters!")
 			wasError = true;
 		}
 
 
-		//? Assign To Validation (easy): Cameron (Tamika was absent)
-		/* Not Empty and longer than 8 characters */
+		//? Assign To Validation: Cameron
 		const assignedElement = document.getElementById("txt-new-task-assigned-to")
-		if(assignedElement.value === '' || assignedElement.value.length <= 8){
+
+		//Check if input is empty or less than 9 characters
+		if(assignedElement.value == '' || assignedElement.value.length <= 8){
 			validationFailed(assignedElement, "Needs to be longer than 8 characters!")
 			wasError = true;
 		}
 
-		/* Validate Status */
+		//? Status validation: Cameron
 		const statusElement = document.getElementById("txt-new-task-status")
 		
-		//It get's the job done
-		switch (statusElement.value) {
-			case "todo":
-				//Valid value
-				break;
-			case "inprogress":
-				//Valid value
-				break;
-			case "review":
-				//Valid value
-				break;
-			case "complete":
-				//Valid value
-				break;
-		
-			default:
-				validationFailed(statusElement, "Please select a valid status!");
-				wasError = true;
-				break;
+		//Checks value against the taskStatus "enum"
+		if(!tm.taskStatus()[statusElement.value]){
+			validationFailed(statusElement, "Please select a valid status!");
+			wasError = true;
 		}
 
-
-		//? Due Date Validation (hard): Cameron
-		/* Not Empty and not less than current date */
-
+		//? Due Date Validation: Cameron
 		//Date object saved seperately in case of error
 		const dsDueDateElement = document.getElementById("ds-task-due-date");
 
@@ -98,8 +130,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		//If there was an error, return.
 		if(wasError) return
 			
-
-		ts.addTask(
+		//Saves task
+		tm.addTask(
 			nameField.value,
 			taskDescription.value,
 			assignedElement.value,
@@ -111,15 +143,19 @@ window.addEventListener('DOMContentLoaded', () => {
 		document.getElementById("btn-new-task-cancel").click()
 	});
 
-	//Marks a form to be invalid
+	//Marks a form input to be invalid
 	function validationFailed(inputElement, message) {
 		const messageTarget = inputElement.parentElement.getElementsByTagName("span")[0];
 		messageTarget.innerHTML = `${message}`
 		messageTarget.classList = "inputError"
 	}
 
+	//Clears the input error messages from screen
 	function clearValidation(){
+		//Get all input error spans
 		const errorTarget = document.querySelectorAll(".inputError")
+
+		//If there is more than 0 error messages showing, loop through each one and set class to none (display none)
 		if(errorTarget.length > 0){
 			errorTarget.forEach(target => {
 				target.classList = "none"
