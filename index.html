@@ -18,11 +18,11 @@
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 	<!-- Our css -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="./src/style.css">
 	<title>Document</title>
 
-	<script src="./TaskManager.js"></script>
-	<script src="./main.js"></script>
+	<script src="./src/TaskManager.js"></script>
+	<script src="./src/main.js"></script>
 
 	<!-- Scrip "runs" after html has laoded (prevents errors) -->
 	<!-- 	<script defer>
@@ -35,10 +35,11 @@
 	<nav id="nav" class="navbar">
 		<!-- the nav -->
 		<a class="navbar-brand" href="title">
-			<img src="logo.png" width="30" height="30" alt="logo">
+			<img src="./images/logo.png" width="30" height="30" alt="logo">
 		</a>
-		<a class="btn btn-light navbar-item" id="navbar-github" href="https://github.com/cameron-doyle/task_manager" target="_blank">
-			<img id="github" src="./github.png" alt="#">
+		<a class="btn btn-light navbar-item" id="navbar-github" href="https://github.com/cameron-doyle/task_manager"
+			target="_blank">
+			<img id="github" src="./images/github.png" alt="#">
 		</a>
 	</nav>
 
@@ -52,175 +53,229 @@
 	 -->
 
 
-	<ul id="content-container" class="list-group">
+	<div id="content-scoll">
+		<ul id="content-container" class="list-group">
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero aperiam deserunt mollitia
+							soluta, inventore veritatis consequuntur quod ea accusantium, animi neque ad aliquid culpa
+							dignissimos aspernatur rem cum. Omnis repellendus expedita numquam exercitationem corrupti
+							consectetur accusamus quos possimus fuga nostrum illum voluptate rem, cupiditate ipsam
+							beatae minus eligendi deserunt dolorem et ab. Dicta cumque aliquam aspernatur omnis suscipit
+							placeat consequuntur maxime eius quod libero id minima, pariatur impedit, in minus ab fuga
+							totam laborum nam voluptatum quos! Tempore, cum voluptas eligendi quam, fugiat odit deleniti
+							nisi quis unde laboriosam nam ipsa expedita enim qui quos? Iste quas inventore, quae
+							repellendus tempora rerum necessitatibus sequi impedit recusandae fugit maiores suscipit
+							aliquid cum voluptas vero tempore saepe eos! Hic placeat recusandae voluptatum dicta
+							incidunt, eligendi doloribus itaque officia labore aperiam minus quibusdam aliquam.
+							Assumenda possimus ab hic nulla quos earum? Amet error eum corrupti, possimus nobis
+							adipisci, aperiam saepe quasi inventore excepturi sed quo minima provident omnis reiciendis.
+							Quae, consequatur mollitia ipsum deserunt porro saepe maiores sed qui, natus ex distinctio?
+							Eaque vero eveniet enim? Unde repellat earum est quidem, animi, debitis consectetur
+							doloribus corrupti obcaecati officia veniam sapiente mollitia. Excepturi dolorem,
+							consequuntur error alias incidunt quibusdam. Architecto quisquam, error sit maxime iste
+							repellat corporis itaque magni ut perspiciatis libero natus. Beatae eaque nam cum quos harum
+							fugit doloremque iste laudantium reprehenderit unde, in nulla quaerat cumque dicta? Soluta,
+							nihil! Sint, placeat amet nisi, ratione accusantium hic fugit ab, quae exercitationem
+							obcaecati architecto vero quod laboriosam a quas suscipit omnis neque veritatis quidem
+							consectetur quos. Architecto beatae eos in veritatis corrupti sequi ipsam, placeat commodi
+							dolores error quae quasi quisquam. Consequatur temporibus cum, quisquam sapiente quo quia
+							corporis tenetur quasi alias et veritatis maiores autem doloremque odio veniam optio
+							reiciendis natus distinctio totam. Consequatur vel nesciunt modi ratione illo dolorum. Et
+							distinctio molestias provident atque doloremque commodi reiciendis earum voluptate unde
+							impedit, illo vitae. Porro maiores blanditiis obcaecati est explicabo. Corporis illum
+							numquam nostrum in architecto asperiores aliquid voluptate optio, fuga obcaecati voluptatum
+							consectetur non! Asperiores a dignissimos sequi ut minus repellendus beatae facere,
+							provident, illo, ab dicta consequuntur quibusdam ipsam odio! Perferendis magnam fugiat, quo
+							aliquid quaerat tempore temporibus harum eos impedit quos quisquam tenetur optio quas veniam
+							omnis alias velit est! Perferendis inventore ut error eligendi totam dignissimos iure
+							mollitia sed eos fugiat excepturi fuga odio esse, possimus reprehenderit ipsum molestias
+							provident, placeat nostrum vitae sunt eius labore animi? Est accusamus aut corrupti
+							similique illo aspernatur optio distinctio nam quidem labore deserunt dolore, obcaecati
+							maxime voluptatem, animi voluptas quisquam nulla earum adipisci? Necessitatibus sequi aut
+							similique consectetur repudiandae sunt quibusdam a porro, odit excepturi illum, inventore
+							dicta eveniet, eos facere voluptatibus nisi molestiae ipsa. Optio molestiae explicabo
+							officia magni. Assumenda incidunt dolores rerum qui, sunt non cumque, sequi earum
+							consectetur tenetur exercitationem accusamus eaque veritatis dolorem id recusandae quasi
+							necessitatibus nam? Similique deserunt voluptas, alias minima, quidem maxime exercitationem,
+							magnam accusantium saepe repellat aut nemo dolorem quis quod sed amet laborum sint
+							molestias? Neque excepturi incidunt iure, ex at assumenda!</p>
+					</div>
+
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
+				</div>
+			</li>
 
 
 
 
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero aperiam deserunt mollitia soluta, inventore veritatis consequuntur quod ea accusantium, animi neque ad aliquid culpa dignissimos aspernatur rem cum. Omnis repellendus expedita numquam exercitationem corrupti consectetur accusamus quos possimus fuga nostrum illum voluptate rem, cupiditate ipsam beatae minus eligendi deserunt dolorem et ab. Dicta cumque aliquam aspernatur omnis suscipit placeat consequuntur maxime eius quod libero id minima, pariatur impedit, in minus ab fuga totam laborum nam voluptatum quos! Tempore, cum voluptas eligendi quam, fugiat odit deleniti nisi quis unde laboriosam nam ipsa expedita enim qui quos? Iste quas inventore, quae repellendus tempora rerum necessitatibus sequi impedit recusandae fugit maiores suscipit aliquid cum voluptas vero tempore saepe eos! Hic placeat recusandae voluptatum dicta incidunt, eligendi doloribus itaque officia labore aperiam minus quibusdam aliquam. Assumenda possimus ab hic nulla quos earum? Amet error eum corrupti, possimus nobis adipisci, aperiam saepe quasi inventore excepturi sed quo minima provident omnis reiciendis. Quae, consequatur mollitia ipsum deserunt porro saepe maiores sed qui, natus ex distinctio? Eaque vero eveniet enim? Unde repellat earum est quidem, animi, debitis consectetur doloribus corrupti obcaecati officia veniam sapiente mollitia. Excepturi dolorem, consequuntur error alias incidunt quibusdam. Architecto quisquam, error sit maxime iste repellat corporis itaque magni ut perspiciatis libero natus. Beatae eaque nam cum quos harum fugit doloremque iste laudantium reprehenderit unde, in nulla quaerat cumque dicta? Soluta, nihil! Sint, placeat amet nisi, ratione accusantium hic fugit ab, quae exercitationem obcaecati architecto vero quod laboriosam a quas suscipit omnis neque veritatis quidem consectetur quos. Architecto beatae eos in veritatis corrupti sequi ipsam, placeat commodi dolores error quae quasi quisquam. Consequatur temporibus cum, quisquam sapiente quo quia corporis tenetur quasi alias et veritatis maiores autem doloremque odio veniam optio reiciendis natus distinctio totam. Consequatur vel nesciunt modi ratione illo dolorum. Et distinctio molestias provident atque doloremque commodi reiciendis earum voluptate unde impedit, illo vitae. Porro maiores blanditiis obcaecati est explicabo. Corporis illum numquam nostrum in architecto asperiores aliquid voluptate optio, fuga obcaecati voluptatum consectetur non! Asperiores a dignissimos sequi ut minus repellendus beatae facere, provident, illo, ab dicta consequuntur quibusdam ipsam odio! Perferendis magnam fugiat, quo aliquid quaerat tempore temporibus harum eos impedit quos quisquam tenetur optio quas veniam omnis alias velit est! Perferendis inventore ut error eligendi totam dignissimos iure mollitia sed eos fugiat excepturi fuga odio esse, possimus reprehenderit ipsum molestias provident, placeat nostrum vitae sunt eius labore animi? Est accusamus aut corrupti similique illo aspernatur optio distinctio nam quidem labore deserunt dolore, obcaecati maxime voluptatem, animi voluptas quisquam nulla earum adipisci? Necessitatibus sequi aut similique consectetur repudiandae sunt quibusdam a porro, odit excepturi illum, inventore dicta eveniet, eos facere voluptatibus nisi molestiae ipsa. Optio molestiae explicabo officia magni. Assumenda incidunt dolores rerum qui, sunt non cumque, sequi earum consectetur tenetur exercitationem accusamus eaque veritatis dolorem id recusandae quasi necessitatibus nam? Similique deserunt voluptas, alias minima, quidem maxime exercitationem, magnam accusantium saepe repellat aut nemo dolorem quis quod sed amet laborum sint molestias? Neque excepturi incidunt iure, ex at assumenda!</p>
-				</div>
 
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
-				</div>
-			</div>
-		</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem</p>
+					</div>
 
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus
+							veniam
+							dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos,
+							iure
+							quisquam rem dolorem!</p>
+					</div>
 
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus
+							veniam
+							dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos,
+							iure
+							quisquam rem dolorem!</p>
+					</div>
 
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus
+							veniam
+							dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos,
+							iure
+							quisquam rem dolorem!</p>
+					</div>
 
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus
+							veniam
+							dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos,
+							iure
+							quisquam rem dolorem!</p>
+					</div>
 
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
 				</div>
-				<div class="card-body">
-					<p>Lorem</p>
-				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus
+							veniam
+							dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos,
+							iure
+							quisquam rem dolorem!</p>
+					</div>
 
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
 				</div>
-			</div>
-		</li>
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus veniam
-						dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos, iure
-						quisquam rem dolorem!</p>
-				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus
+							veniam
+							dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos,
+							iure
+							quisquam rem dolorem!</p>
+					</div>
 
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
 				</div>
-			</div>
-		</li>
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus veniam
-						dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos, iure
-						quisquam rem dolorem!</p>
-				</div>
+			</li>
+			<li class="list-group-item">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
+					<div class="card-header">
+						<h3>Task Name</h3>
+						<p>Assigned To</p>
+					</div>
+					<div class="card-body">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus
+							veniam
+							dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos,
+							iure
+							quisquam rem dolorem!</p>
+					</div>
 
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
+					<div class="card-footer">
+						<h5>Status</h5>
+						<p>DueDate</p>
+					</div>
 				</div>
-			</div>
-		</li>
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus veniam
-						dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos, iure
-						quisquam rem dolorem!</p>
-				</div>
-
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
-				</div>
-			</div>
-		</li>
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus veniam
-						dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos, iure
-						quisquam rem dolorem!</p>
-				</div>
-
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
-				</div>
-			</div>
-		</li>
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus veniam
-						dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos, iure
-						quisquam rem dolorem!</p>
-				</div>
-
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
-				</div>
-			</div>
-		</li>
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus veniam
-						dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos, iure
-						quisquam rem dolorem!</p>
-				</div>
-
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
-				</div>
-			</div>
-		</li>
-		<li class="list-group-item">
-			<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
-				<div class="card-header">
-					<h3>Task Name</h3>
-					<p>Assigned To</p>
-				</div>
-				<div class="card-body">
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ipsa distinctio minus veniam
-						dolore eos in vel eveniet possimus qui eligendi ipsum perspiciatis fuga neque dignissimos, iure
-						quisquam rem dolorem!</p>
-				</div>
-
-				<div class="card-footer">
-					<h5>Status</h5>
-					<p>DueDate</p>
-				</div>
-			</div>
-		</li>
-	</ul>
+			</li>
+		</ul>
+	</div>
 
 	<!-- Assigned to: Cameron -->
 	<button id="btn-add-new-task" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-task">
@@ -243,7 +298,7 @@
 							<!-- Name Container -->
 							<label for="txt-new-task-name" class="form-label">Name</label>
 							<input type="text" autocomplete="off" name="txt-new-task-name" id="txt-new-task-name"
-								class="form-control" value="Testnam_9">
+								class="form-control">
 							<span class="none">Error message</span>
 						</div>
 
@@ -251,7 +306,7 @@
 							<!-- Description Container -->
 							<label for="txt-new-task-description" class="form-label">Description</label>
 							<textarea name="txt-new-task-description" id="txt-new-task-description" cols="30" rows="10"
-								autocomplete="off" class="form-control">This is 15 chars</textarea>
+								autocomplete="off" class="form-control"></textarea>
 							<span class="none">Error message</span>
 						</div>
 
@@ -259,7 +314,7 @@
 							<!-- Assigned to Container -->
 							<label for="txt-new-task-assigned-to" class="form-label">Assign To</label>
 							<input type="text" name="txt-task-assigned-to" id="txt-new-task-assigned-to"
-								class="form-control" value="Testing_9">
+								class="form-control">
 							<span class="none">Error message</span>
 						</div>
 
@@ -269,7 +324,7 @@
 									<!-- Due Date Container -->
 									<label for="ds-task-due-date" class="form-label">Due Date</label>
 									<input type="date" name="ds-task-due-date" id="ds-task-due-date"
-										class="form-control" value="2022-11-29">
+										class="form-control">
 									<span class="none">Error message</span>
 								</div>
 							</div>
@@ -377,13 +432,13 @@
 							<option value="todo" id="open-card-todo">To Do</option>
 							<option value="inprogress" id="open-card-inprogress">In Progress</option>
 							<option value="review" id="open-card-review">Review</option>
-							<option value="complete" id="open-card-complete">Complete</option>
+							<option value="complete" disabled id="open-card-complete">Complete</option>
 						</select>
 					</div>
 
 					<div id="opencard-save-close-container">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button id="btn-opencard-submit" class="btn btn-primary">Save</button>
+						<button id="btn-opencard-mark" class="btn btn-primary">Mark as done</button>
 					</div>
 				</div>
 			</div>

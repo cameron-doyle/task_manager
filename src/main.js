@@ -4,6 +4,16 @@ window.addEventListener('DOMContentLoaded', () => {
 	updateTime() //Technically I'm making a date object as soon as the page loads.
 	const tm = new TaskManager()
 	
+	/* TASK 10 */
+
+	//? Change button on change (medium): Declan
+	/* 
+		Event: change https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+		ElementID: "opencard-status"
+		Goal: When the Task Status changes and no longer matches the status stored in the taskList (see TaskManager.js line:3), change the button ID from "btn-opencard-mark" to "btn-opencard-save", also change the button innerHTML to "Save". otherwise set the button ID to "btn-opencard-mark" and the innerHTML to "Mark as done"
+		NOTE: there is a new method in TaskManager called "getTaskByID()", it should come in handy
+	*/ 
+
 	//Updates data on card popup: Cameron
 	document.getElementById("content-container").addEventListener("click", (e) => {
 		e.stopPropagation() //Stops the event from "bubbling" past this container
@@ -19,55 +29,21 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		//Extracts task ID
-		const taskID = Number(element.id[element.id.length - 1])
+		const taskID = element.id[element.id.length - 1]
 
 		//Validate taskID
-		if(!(taskID > 0))
+		if(isNaN(taskID) || !(taskID > 0))
 			throw new Error(`TaskID on li element is malformed: taskID = ${taskID}`)
-		
 
-		//Get task by ID
-		const myTask = tm.getTaskByID(taskID);
+		//Get task by ID, converts taskID to number (because it's a typeof string)
+		const myTask = tm.getTaskByID(Number(taskID));
 		
 		//Validate task (checks if task was returned, I know it doesn't have to check the ID, but I wanted to and it doesn the same thing)
 		if(!myTask || myTask.ID !== taskID)
 			throw new Error("Task does not exist?!")
-		
+
+		//Render card data
 		tm.renderCard(myTask)
-
-
-
-		/* div class="modal fade" id="open-card" tabindex="-1" role="form" aria-labelledby="open-card-title"
-		aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="open-card-title">Task Name</h5>
-					<p id="open-card-duedate-assignedto">Tamika - 11/12</p>
-				</div>
-
-				<div class="modal-body">
-					<p id="open-card-description">Loading</p>
-				</div>
-
-				<div class="modal-footer" id="opencard-footer">
-					<div id="card-control-container">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
-
-						<label for="opencard-status">Status</label>
-						<select class="form-select" name="opencard-status" id="opencard-status">
-							<option value="todo" id="open-card-todo">To Do</option>
-							<option value="inprogress" id="open-card-inprogress">In Progress</option>
-							<option value="review" id="open-card-review">Review</option>
-							<option value="complete" id="open-card-complete">Complete</option>
-						</select>
-					</div>
-
-					<div id="opencard-save-close-container">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button id="btn-opencard-submit" class="btn btn-primary">Save</button>
-					</div>
-				</div> */
 	})
 
 	//Form submit event for add new task
@@ -86,7 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		//? Description Validation: Declan
-		const taskDescription = document.querySelector('#txt-new-task-description');
+		const taskDescription = document.querySelector('#txt-new-task-description')
 
 		//Checks if input is empty or less than 16 characters
 		if (taskDescription.value == '' || taskDescription.value.length <= 15) {
@@ -115,14 +91,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		//? Due Date Validation: Cameron
 		//Date object saved seperately in case of error
-		const dsDueDateElement = document.getElementById("ds-task-due-date");
+		const dsDueDateElement = document.getElementById("ds-task-due-date")
 
 		//Get dates to compare
-		const date = dsDueDateElement.valueAsDate;
-		let currentDate = new Date();
+		const date = dsDueDateElement.valueAsDate
+		let currentDate = new Date()
 
 		//If date is "less than current date" throw error
-		if (date < currentDate) {
+		if(date === null){
+			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
+			wasError = true;
+		} else if (date < currentDate) {
 			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
 			wasError = true;
 		}
@@ -139,9 +118,17 @@ window.addEventListener('DOMContentLoaded', () => {
 			statusElement.value
 		);
 		
-		//Closes modal by firing click event on the close button
+		//Closes modal by firing click event on the close button (Also clears form)
 		document.getElementById("btn-new-task-cancel").click()
 	});
+
+	document.getElementById("btn-new-task-cancel").addEventListener("click", (e) => {
+		clearNewTaskForm()
+	})
+
+	document.getElementById("btn-new-task-reset").addEventListener("click", (e) => {
+		clearNewTaskForm()
+	})
 
 	//Marks a form input to be invalid
 	function validationFailed(inputElement, message) {
@@ -161,6 +148,15 @@ window.addEventListener('DOMContentLoaded', () => {
 				target.classList = "none"
 			});
 		}
+	}
+
+	function clearNewTaskForm(){
+		clearValidation()
+		document.getElementById("txt-new-task-name").value = ''
+		document.querySelector('#txt-new-task-description').value = ''
+		document.getElementById("txt-new-task-assigned-to").value = ''
+		document.getElementById("txt-new-task-status").value = Object.keys(tm.taskStatus())[0]
+		document.getElementById("ds-task-due-date").value = null
 	}
 
 	//updates the time
