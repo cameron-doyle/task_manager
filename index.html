@@ -13,9 +13,15 @@
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
 
+	<!-- Google icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 	<!-- Google fonts -->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300&family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
 
 	<!-- Our css -->
 	<link rel="stylesheet" href="./src/style.css">
@@ -34,8 +40,9 @@
 	<!-- Assigned to: James -->
 	<nav id="nav" class="navbar">
 		<!-- the nav -->
-		<a class="navbar-brand" href="title">
+		<a id="nav-title-container" class="btn btn-light navbar-item" href="#">
 			<img src="./images/logo.png" width="30" height="30" alt="logo">
+			<h1 id="nav-title">Task Manager</h1>
 		</a>
 		<a class="btn btn-light navbar-item" id="navbar-github" href="https://github.com/cameron-doyle/task_manager"
 			target="_blank">
@@ -134,6 +141,11 @@
 					</div>
 				</div>
 			</li>
+
+
+
+
+
 			<li class="list-group-item">
 				<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
 					<div class="card-header">
@@ -336,7 +348,7 @@
 										<option value="todo">To Do</option>
 										<option value="inprogress">In Progress</option>
 										<option value="review">Review</option>
-										<option value="complete">Complete</option>
+										<option value="complete" disabled>Complete</option>
 									</select>
 									<span class="none">Error message</span>
 								</div>
@@ -425,7 +437,9 @@
 
 				<div class="modal-footer" id="opencard-footer">
 					<div id="card-control-container">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+							<span class="material-symbols-outlined">delete</span>
+						</button>
 
 						<label for="opencard-status">Status</label>
 						<select class="form-select" name="opencard-status" id="opencard-status">

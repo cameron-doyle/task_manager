@@ -7,6 +7,17 @@
 
 :root{
 	--nav-height: 4rem;
+	--nav-color-opaque: #0f4e96;
+	--nav-color-transparent: #0f4e969c;
+	--background-color: #040025;
+	--text-light: #0091ff;
+	--text-dark: #000959;
+	--card-header: #1a3267be;
+	--nav-color: #174480;
+	--card-body: #aac5dbce; 
+	--card-footer: #cae2ffd7; 
+	--card-header-text: #0091ff;
+	--card-footer-text: #005a9e;
 }
 
 .clear::after {
@@ -18,6 +29,24 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	min-width: 350px;
 	padding-top: 4rem;
+
+	/* Space theme */
+	background-color: var(--background-color);
+	background-image: url("/images/stars.gif");
+}
+
+/* Makes starts on the body duller https://css-tricks.com/snippets/css/transparent-background-images/ */
+body::before {
+	content: "";
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+
+	background-color: var(--background-color);
+	opacity: .5;
 }
 
 
@@ -25,27 +54,58 @@ body {
 #nav{
 	padding-left: 1em;
 	padding-right: 1em;
-	background-color: #91c6f8;
 	width: 100%;
 	height: var(--nav-height);
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 1;
+
+	/* Space Theme */
+	background-color: var(--card-header);
 }
 
-#navbar-credit {
-	margin-left: 1em;
+#nav-title-container{
+	white-space: nowrap;
+	padding: .3rem;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+
+}
+
+#nav-title {
+	margin: 0;
+	font-size: 1.15rem;
+	font-family: 'Press Start 2P', cursive;
+	color: black;
+	text-decoration: none;
+
+
+	display: inline-flex;
+    justify-content: center;
+    align-items: flex-end;
+	height: 1.6rem;
+	vertical-align: text-bottom;
+	text-shadow: .1rem .1rem 0 #8da1da;
+}
+
+#nav-title-container img {
+	margin-right: .6rem;
+	height: 1.6rem;
+	line-height: 0; /* Fixes sizing issue */
+	width: auto;
 }
 
 #navbar-github {
 	margin-left: auto;
 	line-height: 0; /* Fixes sizing issue */
-	padding: .3em;
+	padding: .3rem;
 }
 
 #github{
-	height: 1.6em;
+	height: 1.6rem;
 }
 /* End navbar */
 
@@ -108,6 +168,12 @@ body {
 #card-control-container button {
 	display: block;
 	margin-bottom: .5em;
+	line-height: 0;
+	padding: 0.5rem;
+}
+
+#card-control-container button span {
+	font-size: 1.5rem;
 }
 /* End open card */
 
@@ -115,14 +181,14 @@ body {
 /* New Task Modal */
 #btn-add-new-task {
 	position: fixed;
-	bottom: 1.25em;
-	right: 1.25em;
-	padding: 0;
+	bottom: 1.5rem;
+	right: 1.5rem;
+	padding: .7rem;
+	line-height: 0;
 }
 
 #btn-add-new-task span {
-	margin: 0.5em;
-	font-size: 1.5em;
+	font-size: 1.6rem;
 }
 
 #new-task label{
@@ -147,19 +213,53 @@ body {
 	height: calc(100vh - var(--nav-height));
 	overflow-y: auto;
 	overflow-x: clip;
+
+	/* Space Theme */
+	/* background-image: url("/images/space.gif"); */
 }
 
+/* Nice gradient https://css-tricks.com/snippets/css/transparent-background-images/ */
+#content-scoll::after {
+	content: "";
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a9e4f7+0,0c66b5+100&0+56,0.08+74,0.43+92,0.6+100 */
+	background: -moz-linear-gradient(top,  rgba(169,228,247,0) 0%, rgba(81,157,210,0) 56%, rgba(53,135,198,0.08) 74%, rgba(25,112,186,0.43) 92%, rgba(12,102,181,0.6) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(169,228,247,0) 0%,rgba(81,157,210,0) 56%,rgba(53,135,198,0.08) 74%,rgba(25,112,186,0.43) 92%,rgba(12,102,181,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(169,228,247,0) 0%,rgba(81,157,210,0) 56%,rgba(53,135,198,0.08) 74%,rgba(25,112,186,0.43) 92%,rgba(12,102,181,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a9e4f7', endColorstr='#990c66b5',GradientType=0 ); /* IE6-9 */
+
+
+
+}
+
+/* brighter Stars */
+#content-scoll::before {
+	content: "";
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+
+	background-image: url("/images/space.gif");
+}
+
+
+
 #content-container {
-
-
 	padding: 3% 5%;
 	padding-bottom: 4em; /* Prevents the button and clock from blocking the last card in mobile */
 	flex-direction: row;
 	flex-wrap: wrap;
 	display: flex;
-
-	/* Space Theme */
-
+	z-index: 1;
 }
 
 #content-container li {
@@ -170,6 +270,7 @@ body {
 	margin: 1rem .25em;
 	border: none;
 	max-width: 100%;
+	background-color: inherit;
 }
 
 /* Calculates card width for different screen sizes */
@@ -201,6 +302,20 @@ body {
 /* Card design */
 .card{
 	height: 100%;
+	background-color: inherit;
+}
+
+.card .card-header{
+	background-color: var(--card-header);
+	color: white;
+	font-family: 'Space Grotesk', sans-serif;
+}
+
+.card .card-footer{
+	background-color: var(--card-footer);
+	color: black;
+	font-family: 'Space Grotesk', sans-serif;
+	font-weight: bold;
 }
 
 #content-container .card-header p,
@@ -209,7 +324,17 @@ body {
 	float: right;
 	font-size: 1em;
 	margin: auto;
+	/* font-family: 'Anek Telugu', sans-serif; */
 }
+
+/* Space Theme */
+#content-container .card-header p{
+	color: var(--card-header-text);
+}
+#content-container .card-footer p{
+	color: var(--card-footer-text);
+}
+
 
 #content-container .card-footer h5,
 #content-container .card-header h3
@@ -218,11 +343,14 @@ body {
 	font-size: 1em;
 	margin: auto;
 	margin-top: .17em; /* Fix poor height alignment */
+	/* font-family: 'Space Grotesk', sans-serif; */
+	font-weight: bold; /* Overrides bootstrap */
 }
 
 .card-body {
 	height: 13em;
 	overflow-y: auto;
+	background-color: var(--card-body);
 }
 
 #content-container .card-body p{
@@ -274,13 +402,13 @@ form span {
 
 	/* New task button size */
 	#btn-add-new-task {
-		bottom: .75em;
-		right: .75em;
+		bottom: .5rem;
+		right: .5rem;
+		padding: .8rem;
 	}
 
 	#btn-add-new-task span {
-		margin: 0.3em;
-		font-size: 2em;
+		font-size: 1.7rem;
 	}
 
 	/* New task textarea height */

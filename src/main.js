@@ -29,14 +29,14 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		//Extracts task ID
-		const taskID = element.id[element.id.length - 1]
+		const taskID = Number(element.id[element.id.length - 1])
 
 		//Validate taskID
 		if(isNaN(taskID) || !(taskID > 0))
 			throw new Error(`TaskID on li element is malformed: taskID = ${taskID}`)
 
 		//Get task by ID, converts taskID to number (because it's a typeof string)
-		const myTask = tm.getTaskByID(Number(taskID));
+		const myTask = tm.getTaskByID(taskID);
 		
 		//Validate task (checks if task was returned, I know it doesn't have to check the ID, but I wanted to and it doesn the same thing)
 		if(!myTask || myTask.ID !== taskID)
@@ -119,6 +119,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		);
 		
 		//Closes modal by firing click event on the close button (Also clears form)
+		//According to sofia, there is a data attribute for bootstrap that lets you programatically dismiss a modal, I'll look into it later
 		document.getElementById("btn-new-task-cancel").click()
 	});
 
