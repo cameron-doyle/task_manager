@@ -21,9 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		const task = tm.getTaskByID(taskID);
 
 		const oldStatus = task.Status;
-		console.log(`newStatus: ${newStatusValue}`);
-		console.log(`oldStatus: ${oldStatus}`);
-		console.log(`btn ${primaryBtn}`);
 
 		if(newStatusValue === oldStatus){
 			primaryBtn.id = "btn-opencard-mark";
