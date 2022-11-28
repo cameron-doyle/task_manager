@@ -140,7 +140,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			date,
 			statusElement.value
 		);
-		
+
 		//Closes modal by firing click event on the close button (Also clears form)
 		//According to sofia, there is a data attribute for bootstrap that lets you programatically dismiss a modal, I'll look into it later
 		document.getElementById("btn-new-task-cancel").click()

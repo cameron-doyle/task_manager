@@ -1,4 +1,3 @@
-
 class TaskManager{
 	#taskList = []; //Array that stores task objects
 	
@@ -67,11 +66,18 @@ class TaskManager{
 	//Adds a task with a unique ID to the taskList: Camerion
 	addTask(name, description, assignedTo, dueDate, status){
 		//Generates a new ID by getting length.
-		let id = this.#taskList.length
-		id++; //Offets so the first entry is ID = 1
+		let id
+		//If there is an task in the taskList, grab the last entry and make id = the incremented id of lastTask
+		if(this.#taskList.length > 0){
+			const lastTask = this.#taskList[this.#taskList.length - 1]; //Get last task in the array
+			id = lastTask.ID + 1;
+		}else{
+			id = 1;
+		}
 
 		//Push new task to the array after genrating taskObj using factory function.
 		this.#taskList.push(this.taskObjFactory(id, name, description, assignedTo, dueDate, status))
+		const stringData = JSON.stringify(this.#taskList);
 
 		//Renders the DOM
 		this.render()
