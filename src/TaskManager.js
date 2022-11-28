@@ -25,7 +25,16 @@ class TaskManager{
 	}
 	
 	constructor(){
-		//Do stuff in future
+		//Generate 10 test cards
+		for (let i = 1; i <= 10; i++) {
+			//Randomize status
+			let t = Math.floor(Math.random() * 4)
+			t = (t >= 5) ? 4:t
+
+			//Make task
+			this.addTask(`Taskname ${i}`, `Description #${i}`, `Person ${i}`, new Date(), Object.keys(this.taskStatus())[t])
+		}
+		
 	}
 
 	//Returns am array of all tasks: James
