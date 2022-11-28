@@ -118,10 +118,14 @@ body::before {
 
 
 /* Open card */
+#open-card .modal-dialog{
+	margin-top: calc(var(--nav-height) + 2%);
+}
 
 #open-card-description {
 	margin: 1% 4%;
 	text-align: justify;
+	min-height: 18rem;
 }
 
 #open-card-duedate-assignedto {
