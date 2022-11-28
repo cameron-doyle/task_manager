@@ -91,7 +91,7 @@ class TaskManager{
 			//Prepare cardElement
 			let cardElement = document.createElement('li')
 			cardElement.className = "list-group-item"
-			cardElement.id = `task_${task.ID}`
+			cardElement.setAttribute("task-id", task.ID)
 
 			//Create HTML card and render to DOM
 			cardElement.innerHTML = this.createTaskHTML(task)
@@ -130,8 +130,9 @@ class TaskManager{
 	}
 
 	//Renders the open card: Cameron
-	renderCard(taskObj){
+	renderOpenCard(taskObj){
 		//Get elements
+		const openCard = document.getElementById("open-card").setAttribute("task-id", taskObj.ID)
 		const taskName = document.getElementById("open-card-title")
 		const ddat = document.getElementById("open-card-duedate-assignedto") //Merged into one element
 		const description = document.getElementById("open-card-description")
