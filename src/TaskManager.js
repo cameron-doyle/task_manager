@@ -1,6 +1,6 @@
 
 class TaskManager{
-	#taskList = []; //Array that stores task objects
+	#taskList = ["btn-opencard-save"]; //Array that stores task objects
 	
 	//A status "constant" "enum": Cameron
 	taskStatus () {
@@ -127,6 +127,8 @@ class TaskManager{
 		const ddat = document.getElementById("open-card-duedate-assignedto") //Merged into one element
 		const description = document.getElementById("open-card-description")
 		const status = document.getElementById("opencard-status")
+		const save = document.getElementById("btn-opencard-save")
+		
 
 		//Set data
 		taskName.textContent = taskObj.Name
