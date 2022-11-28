@@ -430,7 +430,7 @@ body::before {
 	border: 1px solid #D2D2D2;
 
 	/* Space Theme */
-	background-color: var(--nav-color-transparent);
+	background-color: #04002583; /* Background color with alpha */
 	color: white;
 	border: none;
 }
