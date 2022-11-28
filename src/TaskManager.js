@@ -83,6 +83,18 @@ class TaskManager{
 		this.render()
 	}
 
+	updateTask(taskObj){
+		console.log("Task being updated:", taskObj)
+	}
+
+	//TODO: Declan
+	deleteTask(taskObj){
+		console.log("Task being deleted:", taskObj)
+		//Remove the task from the #taskList
+		//See getTaskByID() for inspiration
+		//call render()
+	}
+
 
 	//Generates the HTML and renders it to the DOM: done as team ("pair" coding)
 	render(){

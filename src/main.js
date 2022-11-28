@@ -4,23 +4,28 @@ window.addEventListener('DOMContentLoaded', () => {
 	updateTime() //Technically I'm making a date object as soon as the page loads.
 	const tm = new TaskManager()
 	
-	/* TASK 10 */
+	
+	//! NOTE: used getTaskByID (see event below)
+	/* Add event listener to mark us done button ElementID "btn-opencard-mark" (Easy): James */
+	/* set status to "complete" with in the taskObj via taskID (See line 22-24) */
+	/* Update the button class list to have "disabled" class attached to it */
 
-	//? Change button on change (medium): Declan
-	/* 
-		Event: change https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
-		ElementID: "opencard-status"
-		Goal: When the Task Status changes and no longer matches the status stored in the taskList (see TaskManager.js line:3), change the button ID from "btn-opencard-mark" to "btn-opencard-save", also change the button innerHTML to "Save". otherwise set the button ID to "btn-opencard-mark" and the innerHTML to "Mark as done"
-		NOTE: there is a new method in TaskManager called "getTaskByID()", it should come in handy
-	*/ 
+	/* add event listener to button ElementID "opencard-delete" event "click" (easy): Declan */
+	/* The button gets the taskObj via taskID (See line 22-24) and calls the tm.deleteTask(taskObj) */
+
+
+
+	//Changes button from "marked as done" to "save task" on open card when change detected.
 	document.getElementById("opencard-status").addEventListener("change", (e) => {
 		const primaryBtn = document.getElementById("opencard-save-close-container").querySelector(".btn-primary");
 		const newStatusValue = e.target.value;
 		
+		//Get task id from HTML
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
-		const task = tm.getTaskByID(taskID);
+		const taskObj = tm.getTaskByID(taskID);
+		
 
-		const oldStatus = task.Status;
+		const oldStatus = taskObj.Status;
 
 		if(newStatusValue === oldStatus){
 			primaryBtn.id = "btn-opencard-mark";
