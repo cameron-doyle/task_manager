@@ -85,6 +85,13 @@ class TaskManager{
 
 	updateTask(taskObj){
 		console.log("Task being updated:", taskObj)
+		
+		this.#taskList.forEach(task => {
+			if (task.ID === taskObj.ID) {
+				task.Status = taskObj.Status
+			}
+		});
+		this.render()
 	}
 
 	//TODO: Declan

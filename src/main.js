@@ -9,11 +9,17 @@ window.addEventListener('DOMContentLoaded', () => {
 	/* Add event listener to mark us done button ElementID "btn-opencard-mark" (Easy): James */
 	/* set status to "complete" with in the taskObj via taskID (See line 22-24) */
 	/* Update the button class list to have "disabled" class attached to it */
+	document.getElementById("btn-opencard-mark").addEventListener("click", (e) => {
+			const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
+		const taskObj = tm.getTaskByID(taskID);
+		taskObj.Status = "complete"
+		tm.updateTask(taskObj)
+	})
 
 	/* add event listener to button ElementID "opencard-delete" event "click" (easy): Declan */
 	/* The button gets the taskObj via taskID (See line 22-24) and calls the tm.deleteTask(taskObj) */
 
-
+	
 
 	//Changes button from "marked as done" to "save task" on open card when change detected.
 	document.getElementById("opencard-status").addEventListener("change", (e) => {
