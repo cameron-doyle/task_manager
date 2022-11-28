@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		const primaryBtn = document.getElementById("opencard-save-close-container").querySelector(".btn-primary");
 		const newStatusValue = e.target.value;
 		
-		const taskID = Number(element.getAttribute("task-id"))
+		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
 		const task = tm.getTaskByID(taskID);
 
 		const oldStatus = task.Status;
