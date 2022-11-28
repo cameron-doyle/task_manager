@@ -25,7 +25,16 @@ class TaskManager{
 	}
 	
 	constructor(){
-		//Do stuff in future
+		//Generate 10 test cards
+		for (let i = 1; i <= 10; i++) {
+			//Randomize status
+			let t = Math.floor(Math.random() * 4)
+			t = (t >= 5) ? 4:t
+
+			//Make task
+			this.addTask(`Taskname ${i}`, `Description #${i}`, `Person ${i}`, new Date(), Object.keys(this.taskStatus())[t])
+		}
+		
 	}
 
 	//Returns am array of all tasks: James
@@ -82,7 +91,7 @@ class TaskManager{
 			//Prepare cardElement
 			let cardElement = document.createElement('li')
 			cardElement.className = "list-group-item"
-			cardElement.id = `task_${task.ID}`
+			cardElement.setAttribute("task-id", task.ID)
 
 			//Create HTML card and render to DOM
 			cardElement.innerHTML = this.createTaskHTML(task)
@@ -121,8 +130,9 @@ class TaskManager{
 	}
 
 	//Renders the open card: Cameron
-	renderCard(taskObj){
+	renderOpenCard(taskObj){
 		//Get elements
+		const openCard = document.getElementById("open-card").setAttribute("task-id", taskObj.ID)
 		const taskName = document.getElementById("open-card-title")
 		const ddat = document.getElementById("open-card-duedate-assignedto") //Merged into one element
 		const description = document.getElementById("open-card-description")

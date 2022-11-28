@@ -13,11 +13,37 @@ window.addEventListener('DOMContentLoaded', () => {
 		Goal: When the Task Status changes and no longer matches the status stored in the taskList (see TaskManager.js line:3), change the button ID from "btn-opencard-mark" to "btn-opencard-save", also change the button innerHTML to "Save". otherwise set the button ID to "btn-opencard-mark" and the innerHTML to "Mark as done"
 		NOTE: there is a new method in TaskManager called "getTaskByID()", it should come in handy
 	*/ 
+	document.getElementById("opencard-status").addEventListener("change", (e) => {
+		const primaryBtn = document.getElementById("opencard-save-close-container").querySelector(".btn-primary");
+		const newStatusValue = e.target.value;
+		
+		const taskID = Number(element.getAttribute("task-id"))
+		const task = tm.getTaskByID(taskID);
+
+		const oldStatus = task.Status;
+		console.log(`newStatus: ${newStatusValue}`);
+		console.log(`oldStatus: ${oldStatus}`);
+		console.log(`btn ${primaryBtn}`);
+
+		if(newStatusValue === oldStatus){
+			primaryBtn.id = "btn-opencard-mark";
+			primaryBtn.innerHTML = "Mark as done"
+		}else{
+			primaryBtn.id = "btn-opencard-save";
+			primaryBtn.innerHTML = "Save Task"
+		}
+
+		//TODO: Update task here
+	})
 
 	//Updates data on card popup: Cameron
 	document.getElementById("content-container").addEventListener("click", (e) => {
 		e.stopPropagation() //Stops the event from "bubbling" past this container
 		let element = e.target
+
+		const primaryBtn = document.getElementById("opencard-save-close-container").querySelector(".btn-primary");
+		primaryBtn.id = "btn-opencard-mark";
+		primaryBtn.innerHTML = "Mark as done"
 
 		//Returns if event was fired on the container
 		if(element === e.currentTarget)
@@ -29,7 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		//Extracts task ID
-		const taskID = Number(element.id[element.id.length - 1])
+		const taskID = Number(element.getAttribute("task-id"))
 
 		//Validate taskID
 		if(isNaN(taskID) || !(taskID > 0))
@@ -43,7 +69,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			throw new Error("Task does not exist?!")
 
 		//Render card data
-		tm.renderCard(myTask)
+		tm.renderOpenCard(myTask)
 	})
 
 	//Form submit event for add new task

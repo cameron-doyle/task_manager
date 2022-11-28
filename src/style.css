@@ -3,9 +3,9 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-} 
+}
 
-:root{
+:root {
 	--nav-height: 4rem;
 	--nav-color-opaque: #0f4e96;
 	--nav-color-transparent: #0f4e969c;
@@ -14,10 +14,13 @@
 	--text-dark: #000959;
 	--card-header: #1a3267be;
 	--nav-color: #174480;
-	--card-body: #aac5dbce; 
-	--card-footer: #cae2ffd7; 
+	--card-body: #aac5dbce;
+	--card-footer: #cae2ffd7;
 	--card-header-text: #0091ff;
 	--card-footer-text: #005a9e;
+	--modal-header: #1a3267be;
+	--modal-body: #a1bad6ee;
+	--modal-footer: #b4c8e8f8;
 }
 
 .clear::after {
@@ -51,7 +54,7 @@ body::before {
 
 
 /* Navbar */
-#nav{
+#nav {
 	padding-left: 1em;
 	padding-right: 1em;
 	width: 100%;
@@ -65,7 +68,7 @@ body::before {
 	background-color: var(--card-header);
 }
 
-#nav-title-container{
+#nav-title-container {
 	white-space: nowrap;
 	padding: .3rem;
 
@@ -84,8 +87,8 @@ body::before {
 
 
 	display: inline-flex;
-    justify-content: center;
-    align-items: flex-end;
+	justify-content: center;
+	align-items: flex-end;
 	height: 1.6rem;
 	vertical-align: text-bottom;
 	text-shadow: .1rem .1rem 0 #8da1da;
@@ -94,28 +97,35 @@ body::before {
 #nav-title-container img {
 	margin-right: .6rem;
 	height: 1.6rem;
-	line-height: 0; /* Fixes sizing issue */
+	line-height: 0;
+	/* Fixes sizing issue */
 	width: auto;
 }
 
 #navbar-github {
 	margin-left: auto;
-	line-height: 0; /* Fixes sizing issue */
+	line-height: 0;
+	/* Fixes sizing issue */
 	padding: .3rem;
 }
 
-#github{
+#github {
 	height: 1.6rem;
 }
+
 /* End navbar */
 
 
 
 /* Open card */
+#open-card .modal-dialog{
+	margin-top: calc(var(--nav-height) + 2%);
+}
 
 #open-card-description {
 	margin: 1% 4%;
 	text-align: justify;
+	min-height: 18rem;
 }
 
 #open-card-duedate-assignedto {
@@ -128,7 +138,7 @@ body::before {
 	font-size: 1.25em;
 }
 
-#open-card .modal-body{
+#open-card .modal-body {
 	max-height: 25em;
 	overflow-y: auto;
 }
@@ -144,7 +154,8 @@ body::before {
 
 #opencard-save-close-container {
 	height: 6.5em;
-	width: 60%; /* Change this to increase or decrease the margin between the close and open button */
+	width: 60%;
+	/* Change this to increase or decrease the margin between the close and open button */
 	display: inline-flex;
 	align-items: flex-end;
 	justify-content: flex-end;
@@ -155,7 +166,8 @@ body::before {
 	margin-left: .5em;
 }
 
-#btn-opencard-mark, #btn-opencard-save {
+#btn-opencard-mark,
+#btn-opencard-save {
 	width: 8em;
 	min-width: 8em;
 	white-space: nowrap;
@@ -175,6 +187,25 @@ body::before {
 #card-control-container button span {
 	font-size: 1.5rem;
 }
+
+/* Space theme */
+#open-card .modal-content {
+	background-color: #00000000;
+}
+
+#open-card .modal-header {
+	background-color: var(--modal-header);
+	color: white;
+}
+
+#open-card .modal-body {
+	background-color: var(--modal-body);
+}
+
+#open-card .modal-footer {
+	background-color: var(--modal-footer);
+}
+
 /* End open card */
 
 
@@ -191,18 +222,36 @@ body::before {
 	font-size: 1.6rem;
 }
 
-#new-task label{
+#new-task label {
 	margin-bottom: auto;
 }
 
-#new-task label
-{
+#new-task label {
 	margin-top: .25em;
 }
 
 #btn-new-task-reset {
 	margin-right: auto;
 }
+
+/* Space theme */
+#new-task .modal-content {
+	background-color: #00000000;
+}
+
+#new-task .modal-header {
+	background-color: var(--modal-header);
+	color: white;
+}
+
+#new-task .modal-body {
+	background-color: var(--modal-body);
+}
+
+#new-task .modal-footer {
+	background-color: var(--modal-footer);
+}
+
 /* End new task modal */
 
 
@@ -229,10 +278,14 @@ body::before {
 	z-index: -1;
 
 	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a9e4f7+0,0c66b5+100&0+56,0.08+74,0.43+92,0.6+100 */
-	background: -moz-linear-gradient(top,  rgba(169,228,247,0) 0%, rgba(81,157,210,0) 56%, rgba(53,135,198,0.08) 74%, rgba(25,112,186,0.43) 92%, rgba(12,102,181,0.6) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  rgba(169,228,247,0) 0%,rgba(81,157,210,0) 56%,rgba(53,135,198,0.08) 74%,rgba(25,112,186,0.43) 92%,rgba(12,102,181,0.6) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  rgba(169,228,247,0) 0%,rgba(81,157,210,0) 56%,rgba(53,135,198,0.08) 74%,rgba(25,112,186,0.43) 92%,rgba(12,102,181,0.6) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a9e4f7', endColorstr='#990c66b5',GradientType=0 ); /* IE6-9 */
+	background: -moz-linear-gradient(top, rgba(169, 228, 247, 0) 0%, rgba(81, 157, 210, 0) 56%, rgba(53, 135, 198, 0.08) 74%, rgba(25, 112, 186, 0.43) 92%, rgba(12, 102, 181, 0.6) 100%);
+	/* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(169, 228, 247, 0) 0%, rgba(81, 157, 210, 0) 56%, rgba(53, 135, 198, 0.08) 74%, rgba(25, 112, 186, 0.43) 92%, rgba(12, 102, 181, 0.6) 100%);
+	/* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(169, 228, 247, 0) 0%, rgba(81, 157, 210, 0) 56%, rgba(53, 135, 198, 0.08) 74%, rgba(25, 112, 186, 0.43) 92%, rgba(12, 102, 181, 0.6) 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a9e4f7', endColorstr='#990c66b5', GradientType=0);
+	/* IE6-9 */
 
 
 
@@ -255,7 +308,8 @@ body::before {
 
 #content-container {
 	padding: 3% 5%;
-	padding-bottom: 4em; /* Prevents the button and clock from blocking the last card in mobile */
+	padding-bottom: 4em;
+	/* Prevents the button and clock from blocking the last card in mobile */
 	flex-direction: row;
 	flex-wrap: wrap;
 	display: flex;
@@ -275,24 +329,24 @@ body::before {
 
 /* Calculates card width for different screen sizes */
 @media screen and (min-width: 50em) {
-    #content-container li {
-       max-width: calc(50% -  1em);
-    }
+	#content-container li {
+		max-width: calc(50% - 1em);
+	}
 
 
 }
- 
+
 @media screen and (min-width: 70em) {
-    #content-container li {
-        max-width: calc(33.33% - 1em);
-    }
+	#content-container li {
+		max-width: calc(33.33% - 1em);
+	}
 
 }
 
 @media screen and (min-width: 95em) {
-    #content-container li {
-        max-width: calc(25% - 1em);
-    }
+	#content-container li {
+		max-width: calc(25% - 1em);
+	}
 }
 
 /* End content layout */
@@ -300,18 +354,18 @@ body::before {
 
 
 /* Card design */
-.card{
+.card {
 	height: 100%;
 	background-color: inherit;
 }
 
-.card .card-header{
+.card .card-header {
 	background-color: var(--card-header);
 	color: white;
 	font-family: 'Space Grotesk', sans-serif;
 }
 
-.card .card-footer{
+.card .card-footer {
 	background-color: var(--card-footer);
 	color: black;
 	font-family: 'Space Grotesk', sans-serif;
@@ -319,8 +373,7 @@ body::before {
 }
 
 #content-container .card-header p,
-#content-container .card-footer p
-{
+#content-container .card-footer p {
 	float: right;
 	font-size: 1em;
 	margin: auto;
@@ -328,23 +381,25 @@ body::before {
 }
 
 /* Space Theme */
-#content-container .card-header p{
+#content-container .card-header p {
 	color: var(--card-header-text);
 }
-#content-container .card-footer p{
+
+#content-container .card-footer p {
 	color: var(--card-footer-text);
 }
 
 
 #content-container .card-footer h5,
-#content-container .card-header h3
-{
+#content-container .card-header h3 {
 	float: left;
 	font-size: 1em;
 	margin: auto;
-	margin-top: .17em; /* Fix poor height alignment */
+	margin-top: .17em;
+	/* Fix poor height alignment */
 	/* font-family: 'Space Grotesk', sans-serif; */
-	font-weight: bold; /* Overrides bootstrap */
+	font-weight: bold;
+	/* Overrides bootstrap */
 }
 
 .card-body {
@@ -353,12 +408,13 @@ body::before {
 	background-color: var(--card-body);
 }
 
-#content-container .card-body p{
+#content-container .card-body p {
 	text-align: justify;
 	font-size: .9em;
 	max-height: 100%;
 
 }
+
 /* End Card Design */
 
 /* Sprint 2 */
@@ -372,9 +428,14 @@ body::before {
 	padding: .2em .5em;
 	background-color: #F7F7F7;
 	border: 1px solid #D2D2D2;
+
+	/* Space Theme */
+	background-color: #04002583; /* Background color with alpha */
+	color: white;
+	border: none;
 }
 
-#current-date-container p{
+#current-date-container p {
 	margin: 0;
 }
 
@@ -389,6 +450,26 @@ form span {
 	font-size: .75em;
 	position: relative;
 
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: .5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	opacity: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--nav-color-opaque);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--card-footer);
 }
 
 .none {
@@ -412,7 +493,7 @@ form span {
 	}
 
 	/* New task textarea height */
-	#new-task textarea{
+	#new-task textarea {
 		height: 13em;
 	}
 
