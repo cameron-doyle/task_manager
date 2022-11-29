@@ -21,6 +21,8 @@
 	--modal-header: #1a3267be;
 	--modal-body: #a1bad6ee;
 	--modal-footer: #b4c8e8f8;
+	--content-padding-y: calc(100vh * .05);
+	--content-padding-x: calc(100vw * .04);
 }
 
 .clear::after {
@@ -307,7 +309,7 @@ body::before {
 
 
 #content-container {
-	padding: 3% 5%;
+	padding: var(--content-padding-y) var(--content-padding-x);
 	padding-bottom: 4em;
 	/* Prevents the button and clock from blocking the last card in mobile */
 	flex-direction: row;
@@ -480,6 +482,53 @@ form span {
 .hideError {
 	height: 0;
 	top: -1.25em;
+}
+
+#tutorial{
+	background-color: var(--nav-color-transparent);
+	border-radius: 2rem;
+	color: white;
+	width: 100%;
+	height: calc((100vh - var(--nav-height)) - (var(--content-padding-y) * 2) - (100vh * .02));
+	padding: 2% 5%;
+	position: relative;
+}
+
+#tutorial .material-symbols-outlined{
+	font-size: 5rem;
+	position: absolute;
+
+	/* Animation */
+	animation-duration: 750ms;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: point;
+}
+
+@keyframes point {
+	from {
+		transform: translate(-2rem, 0);
+	}
+
+	to {
+		transform: translate(-1rem, 0);
+	}
+}
+
+#tutorial #arrow_github {
+	top: 0;
+	right: 0;
+	rotate: -45deg;
+}
+#tutorial #arrow_button {
+	bottom: 0;
+	right: 0;
+	rotate: 45deg;
+}
+#tutorial #arrow_clock {
+	bottom: 0;
+	left: 0;
+	rotate: 135deg;
 }
 
 /* Mobile view */
