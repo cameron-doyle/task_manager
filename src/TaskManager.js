@@ -127,6 +127,10 @@ class TaskManager {
 	loadFromStorage() {
 		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey),)
 
+		//Check if tasks is null (bugfix)
+		if(tasks == null)
+			return
+
 		//Convert DueDate from string to DateObj (JSON serialization doesn't convert it back)
 		this.#taskList = tasks.map((task) => {
 			task.DueDate = new Date(task.DueDate)
