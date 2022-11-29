@@ -118,7 +118,7 @@ body::before {
 
 
 /* Open card */
-#open-card .modal-dialog{
+#open-card .modal-dialog {
 	margin-top: calc(var(--nav-height) + 2%);
 }
 
@@ -430,7 +430,8 @@ body::before {
 	border: 1px solid #D2D2D2;
 
 	/* Space Theme */
-	background-color: #04002583; /* Background color with alpha */
+	background-color: #04002583;
+	/* Background color with alpha */
 	color: white;
 	border: none;
 }
@@ -473,6 +474,10 @@ form span {
 }
 
 .none {
+	display: none;
+}
+
+.hideError {
 	height: 0;
 	top: -1.25em;
 }
