@@ -175,7 +175,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		if (date === null) {
 			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
 			wasError = true;
-		} else if (date < currentDate) { //BUG: DueDate doesn't match because it's using time now?!
+		} else if (date < currentDate) {
 			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
 			wasError = true;
 		}
