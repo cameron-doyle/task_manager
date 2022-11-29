@@ -1,5 +1,6 @@
 class TaskManager{
 	#taskList = []; //Array that stores task objects
+	static #storageKey = "DJC_Task_Manager_Generation";
 	
 	//A status "constant" "enum": Cameron
 	taskStatus () {
@@ -23,17 +24,10 @@ class TaskManager{
 		}
 	}
 	
+	//Loads from localStorage and renders: Cameron
 	constructor(){
-		//Generate 10 test cards
-		for (let i = 1; i <= 10; i++) {
-			//Randomize status
-			let t = Math.floor(Math.random() * 4)
-			t = (t >= 5) ? 4:t
-
-			//Make task
-			this.addTask(`Taskname ${i}`, `Description #${i}`, `Person ${i}`, new Date(), Object.keys(this.taskStatus())[t])
-		}
-		
+		this.loadFromStorage()
+		this.render()
 	}
 
 	//Returns am array of all tasks: James
@@ -115,9 +109,34 @@ class TaskManager{
 			cardElement.innerHTML = this.createTaskHTML(task)
 			cardContainer.appendChild(cardElement)
 		})
+		this.saveToStorage()
 	}
 
-	//Generates the card HTML with data for a given taskObj */
+	//Saves tasks to localStorage: Cameron
+	saveToStorage(){
+		//Serialize the taskList
+		const tasksSerial = JSON.stringify(this.#taskList)
+		//Get existing localStorage serialized data
+		const existingStorage = localStorage.getItem(TaskManager.#storageKey)
+
+		//If the existingStorage is outdated, update it
+		if(existingStorage !== tasksSerial){
+			localStorage.setItem(TaskManager.#storageKey, tasksSerial)
+		}
+	}
+
+	//Loads tasks from localStorage: Cameron
+	loadFromStorage(){
+		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey), )
+
+		//Convert DueDate from string to DateObj (JSON serialization doesn't convert it back)
+		this.#taskList = tasks.map((task) => {
+			task.DueDate = new Date(task.DueDate)
+			return task
+		})
+	}
+
+	//Generates the card HTML with data for a given taskObj: Cameron
 	createTaskHTML(taskObj){
 		
 		//Formats status to be consistent with the "add task" form

@@ -1,7 +1,7 @@
 console.log("Script loaded");
 
 window.addEventListener('DOMContentLoaded', () => {
-	updateTime() //Technically I'm making a date object as soon as the page loads.
+	updateTime() //Update clock so it's not "Loading" for an entire second while the setInterval loads up.
 	const tm = new TaskManager()
 	
 	
