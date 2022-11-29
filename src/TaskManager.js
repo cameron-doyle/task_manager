@@ -140,11 +140,11 @@ class TaskManager {
 		//Get card container
 		const cardContainer = document.getElementById("content-container")
 
-		//Wipe existing cards
-		cardContainer.innerHTML = ''
-
 		//Iterate through the taskList and render each card
 		if (this.#taskList.length > 0) {
+			//Wipe existing cards
+			cardContainer.innerHTML = ''
+
 			this.#taskList.forEach(task => {
 				//Prepare cardElement
 				let cardElement = document.createElement('li')
@@ -157,7 +157,7 @@ class TaskManager {
 			})
 		} else {
 			//TODO: render tutorial page
-			cardContainer.innerHTML = ``
+			//cardContainer.innerHTML = `<p>Welcome!</p>`
 		}
 
 		this.saveToStorage()
