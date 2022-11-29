@@ -472,7 +472,11 @@ form span {
 	background: var(--card-footer);
 }
 
-.none {
+.none{
+	display: none;
+}
+
+.hideError {
 	height: 0;
 	top: -1.25em;
 }

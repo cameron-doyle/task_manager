@@ -4,21 +4,51 @@ window.addEventListener('DOMContentLoaded', () => {
 	updateTime() //Update clock so it's not "Loading" for an entire second while the setInterval loads up.
 	const tm = new TaskManager()
 	
-	
-	//! NOTE: used getTaskByID (see event below)
-	/* Add event listener to mark us done button ElementID "btn-opencard-mark" (Easy): James */
-	/* set status to "complete" with in the taskObj via taskID (See line 22-24) */
-	/* Update the button class list to have "disabled" class attached to it */
+	//Marks the task as done: James
 	document.getElementById("btn-opencard-mark").addEventListener("click", (e) => {
-			const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
+		//Get taskID from HTML and get taskObj
+		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
 		const taskObj = tm.getTaskByID(taskID);
-		taskObj.Status = "complete"
+
+		//Set status to complete/done
+		taskObj.Status = Object.keys(tm.taskStatus())[3]
+
 		tm.updateTask(taskObj)
+
+		//Disables the "mark as done" button
+		e.target.setAttribute("disabled", '')
+
+		//Set status dropdown to complete/done
+		document.getElementById("opencard-status").value = Object.keys(tm.taskStatus())[3]
 	})
 
-	/* add event listener to button ElementID "opencard-delete" event "click" (easy): Declan */
-	/* The button gets the taskObj via taskID (See line 22-24) and calls the tm.deleteTask(taskObj) */
+	//Updates the task: Cameron
+	document.getElementById("btn-opencard-update").addEventListener("click", (e) => {
+		//TODO: Update task
+		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
 
+		//taskObjFactory(id, name, description, assignedTo, dueDate, status) {
+		/* const taskObj = tm.taskObjFactory(
+			taskID,
+			document.getElementById("open-card-title").value, //Task Name
+			document.getElementById("open-card-duedate-assignedto").value, //AssignedTo and DueDate
+			document.getElementById("open-card-description").value, //
+			document.getElementById("opencard-status").value,
+		); */
+		const taskObj = tm.getTaskByID(taskID)
+		taskObj.Status = document.getElementById("opencard-status").value
+		tm.updateTask(taskObj)
+
+		//Check
+		if(taskObj.Status === Object.keys(tm.taskStatus())[3]){
+			document.getElementById("btn-opencard-mark").setAttribute("disabled", '')
+		}else{
+			document.getElementById("btn-opencard-mark").removeAttribute("disabled", '')
+		}
+		updateOpenCardButtons()
+	})
+
+	//Deletes the task: Declan
 	document.getElementById("opencard-delete").addEventListener("click", (e) => {
 		//Get task id from HTML
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
@@ -28,9 +58,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 	//Changes button from "marked as done" to "save task" on open card when change detected.
-	document.getElementById("opencard-status").addEventListener("change", (e) => {
-		const primaryBtn = document.getElementById("opencard-save-close-container").querySelector(".btn-primary");
-		const newStatusValue = e.target.value;
+	document.getElementById("opencard-status").addEventListener("change", updateOpenCardButtons)
+
+	//Swaps "mark as done" button with "Update task" button if required
+	function updateOpenCardButtons(){
+		const btnUpdate = document.getElementById("btn-opencard-update")
+		const btnMark = document.getElementById("btn-opencard-mark")
+
+		const newStatusValue = document.getElementById("opencard-status").value;
 		
 		//Get task id from HTML
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
@@ -40,24 +75,20 @@ window.addEventListener('DOMContentLoaded', () => {
 		const oldStatus = taskObj.Status;
 
 		if(newStatusValue === oldStatus){
-			primaryBtn.id = "btn-opencard-mark";
-			primaryBtn.innerHTML = "Mark as done"
+			//Show mark button and hide update
+			btnMark.classList = "btn btn-primary"
+			btnUpdate.classList = "btn btn-primary none"
 		}else{
-			primaryBtn.id = "btn-opencard-save";
-			primaryBtn.innerHTML = "Save Task"
+			//Show update button and hide mark
+			btnUpdate.classList = "btn btn-primary"
+			btnMark.classList = "btn btn-primary none"
 		}
-
-		//TODO: Update task here
-	})
+	}
 
 	//Updates data on card popup: Cameron
 	document.getElementById("content-container").addEventListener("click", (e) => {
 		e.stopPropagation() //Stops the event from "bubbling" past this container
 		let element = e.target
-
-		const primaryBtn = document.getElementById("opencard-save-close-container").querySelector(".btn-primary");
-		primaryBtn.id = "btn-opencard-mark";
-		primaryBtn.innerHTML = "Mark as done"
 
 		//Returns if event was fired on the container
 		if(element === e.currentTarget)
@@ -81,6 +112,13 @@ window.addEventListener('DOMContentLoaded', () => {
 		//Validate task (checks if task was returned, I know it doesn't have to check the ID, but I wanted to and it doesn the same thing)
 		if(!myTask || myTask.ID !== taskID)
 			throw new Error("Task does not exist?!")
+
+		//Disables "mark as done" button if already marked as complete/done (index 3), otherwise enables it
+		if(myTask.Status === Object.keys(tm.taskStatus())[3]){
+			document.getElementById("btn-opencard-mark").setAttribute("disabled", '')
+		}else{
+			document.getElementById("btn-opencard-mark").removeAttribute("disabled", '')
+		}
 
 		//Render card data
 		tm.renderOpenCard(myTask)

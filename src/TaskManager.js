@@ -8,7 +8,7 @@ class TaskManager{
 			todo: "To Do",
 			inprogress: "In Progress",
 			review: "Review",
-			complete: "Complete"
+			complete: "Done"
 		}
 	}
 	
@@ -47,14 +47,17 @@ class TaskManager{
 
 	//Gets task by given ID: Cameron
 	getTaskByID(taskID){
-		let result //Holds forEach return value
+		/* let result //Holds forEach return value
 		this.#taskList.forEach(task => {
 			if(task.ID === taskID) {
 				result = task;
 				return
 			}
-		});
-		return result;
+		}); */
+
+		//Filter, than return single taskObj
+		const r = this.#taskList.filter(task => task.ID === taskID)
+		return (r != null && r.length > 0) ? r[0]:null
 	}
 
 	//Adds a task with a unique ID to the taskList: Camerion
@@ -77,30 +80,23 @@ class TaskManager{
 		this.render()
 	}
 
+	//Updates the task and saves it to localStorage: James
 	updateTask(taskObj){
-		console.log("Task being updated:", taskObj)
-		
 		this.#taskList.forEach(task => {
 			if (task.ID === taskObj.ID) {
-				task.Status = taskObj.Status
+				task = taskObj
+				return
 			}
 		});
 		this.render()
 	}
 
-	//TODO: Declan
+	//Delete a task and saves it to localStorage: Declan
 	deleteTask(taskObj){
-		console.log("Task being deleted:", taskObj)
-		this.#taskList.forEach(task => {
-			if(task.ID === taskObj.ID) {
-				task = null 
-			}
-				
-		});
+		this.#taskList = this.#taskList.filter(task => taskObj.ID !== task.ID) //Filter taskList
+
+		//Update DOM
 		this.render()
-		//Remove the task from the #taskList
-	    //See getTaskByID() for inspiration
-		//call render()
 	}
 
 
@@ -183,7 +179,7 @@ class TaskManager{
 	//Renders the open card: Cameron
 	renderOpenCard(taskObj){
 		//Get elements
-		const openCard = document.getElementById("open-card").setAttribute("task-id", taskObj.ID)
+		document.getElementById("open-card").setAttribute("task-id", taskObj.ID)
 		const taskName = document.getElementById("open-card-title")
 		const ddat = document.getElementById("open-card-duedate-assignedto") //Merged into one element
 		const description = document.getElementById("open-card-description")
