@@ -3,7 +3,7 @@ console.log("Script loaded");
 window.addEventListener('DOMContentLoaded', () => {
 	updateTime() //Update clock so it's not "Loading" for an entire second while the setInterval loads up.
 	const tm = new TaskManager()
-	
+
 	//Marks the task as done: James
 	document.getElementById("btn-opencard-mark").addEventListener("click", (e) => {
 		//Get taskID from HTML and get taskObj
@@ -49,32 +49,32 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("opencard-status").addEventListener("change", updateOpenCardButtons)
 
 	//Swaps "mark as done" button with "Update task" button if required
-	function updateOpenCardButtons(){
+	function updateOpenCardButtons() {
 		const btnUpdate = document.getElementById("btn-opencard-update")
 		const btnMark = document.getElementById("btn-opencard-mark")
 
 		const newStatusValue = document.getElementById("opencard-status").value;
-		
+
 		//Get task id from HTML
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
 		const taskObj = tm.getTaskByID(taskID);
-		
+
 
 		const oldStatus = taskObj.Status;
 
-		if(newStatusValue === oldStatus){
+		if (newStatusValue === oldStatus) {
 			//Show mark button and hide update
 			btnMark.classList = "btn btn-primary"
 			btnUpdate.classList = "btn btn-primary none"
-		}else{
+		} else {
 			//Show update button and hide mark
 			btnUpdate.classList = "btn btn-primary"
 			btnMark.classList = "btn btn-primary none"
 		}
 
-		if(taskObj.Status === Object.keys(tm.taskStatus())[3]){
+		if (taskObj.Status === Object.keys(tm.taskStatus())[3]) {
 			document.getElementById("btn-opencard-mark").setAttribute("disabled", '')
-		}else{
+		} else {
 			document.getElementById("btn-opencard-mark").removeAttribute("disabled", '')
 		}
 	}
@@ -85,11 +85,11 @@ window.addEventListener('DOMContentLoaded', () => {
 		let element = e.target
 
 		//Returns if event was fired on the container
-		if(element === e.currentTarget)
+		if (element === e.currentTarget)
 			return
-		
+
 		//Navigates up the DOM to find the "li" element which contains the taskID
-		while(element.nodeName !== "LI"){
+		while (element.nodeName !== "LI") {
 			element = element.parentElement
 		}
 
@@ -97,14 +97,14 @@ window.addEventListener('DOMContentLoaded', () => {
 		const taskID = Number(element.getAttribute("task-id"))
 
 		//Validate taskID
-		if(isNaN(taskID) || !(taskID > 0))
+		if (isNaN(taskID) || !(taskID > 0))
 			throw new Error(`TaskID on li element is malformed: taskID = ${taskID}`)
 
 		//Get task by ID, converts taskID to number (because it's a typeof string)
 		const myTask = tm.getTaskByID(taskID);
-		
+
 		//Validate task (checks if task was returned, I know it doesn't have to check the ID, but I wanted to and it doesn the same thing)
-		if(!myTask || myTask.ID !== taskID)
+		if (!myTask || myTask.ID !== taskID)
 			throw new Error("Task does not exist?!")
 
 		//Render card data
@@ -143,16 +143,16 @@ window.addEventListener('DOMContentLoaded', () => {
 		const assignedElement = document.getElementById("txt-new-task-assigned-to")
 
 		//Check if input is empty or less than 9 characters
-		if(assignedElement.value == '' || assignedElement.value.length <= 8){
+		if (assignedElement.value == '' || assignedElement.value.length <= 8) {
 			validationFailed(assignedElement, "Needs to be longer than 8 characters!")
 			wasError = true;
 		}
 
 		//? Status validation: Cameron
 		const statusElement = document.getElementById("txt-new-task-status")
-		
+
 		//Checks value against the taskStatus "enum"
-		if(!tm.taskStatus()[statusElement.value]){
+		if (!tm.taskStatus()[statusElement.value]) {
 			validationFailed(statusElement, "Please select a valid status!");
 			wasError = true;
 		}
@@ -166,7 +166,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		let currentDate = new Date()
 
 		//If date is "less than current date" throw error
-		if(date === null){
+		if (date === null) {
 			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
 			wasError = true;
 		} else if (date < currentDate) {
@@ -175,8 +175,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 		//If there was an error, return.
-		if(wasError) return
-			
+		if (wasError) return
+
 		//Saves task
 		tm.addTask(
 			nameField.value,
@@ -207,19 +207,19 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 
 	//Clears the input error messages from screen
-	function clearValidation(){
+	function clearValidation() {
 		//Get all input error spans
 		const errorTarget = document.querySelectorAll(".inputError")
 
 		//If there is more than 0 error messages showing, loop through each one and set class to none (display none)
-		if(errorTarget.length > 0){
+		if (errorTarget.length > 0) {
 			errorTarget.forEach(target => {
 				target.classList = "none"
 			});
 		}
 	}
 
-	function clearNewTaskForm(){
+	function clearNewTaskForm() {
 		clearValidation()
 		document.getElementById("txt-new-task-name").value = ''
 		document.querySelector('#txt-new-task-description').value = ''
@@ -232,7 +232,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	function updateTime() {
 		const date = new Date();
 		const timeElement = document.getElementById("current-date-container");
-		
+
 		//Set date and time
 		timeElement.innerHTML = `${formatTime()}<br>${
 			//Prepends a 0 if the day is less than 10.

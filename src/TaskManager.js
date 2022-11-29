@@ -1,9 +1,10 @@
-class TaskManager{
+class TaskManager {
 	#taskList = []; //Array that stores task objects
 	static #storageKey = "DJC_Task_Manager_Generation";
-	
+
+
 	//A status "constant" "enum": Cameron
-	taskStatus () {
+	taskStatus() {
 		return {
 			todo: "To Do",
 			inprogress: "In Progress",
@@ -11,7 +12,8 @@ class TaskManager{
 			complete: "Done"
 		}
 	}
-	
+
+
 	//A factory function for the task object creation: Cameron
 	taskObjFactory(id, name, description, assignedTo, dueDate, status) {
 		return {
@@ -23,30 +25,34 @@ class TaskManager{
 			Status: status
 		}
 	}
-	
+
+
 	//Loads from localStorage and renders: Cameron
-	constructor(){
+	constructor() {
 		this.loadFromStorage()
 		this.render()
 	}
+
 
 	//Returns am array of all tasks: James
 	getAllTasks() {
 		return this.#taskList
 	}
 
+
 	//Returns all tasks that are set to a given status: Declan
-	getTasksWithStatus (status) {
+	getTasksWithStatus(status) {
 		let newTaskList = [];
 		this.#taskList.forEach(task => {
-			if(task.Status === status)
+			if (task.Status === status)
 				newTaskList.push(task)
 		});
 		return newTaskList
 	}
 
+
 	//Gets task by given ID: Cameron
-	getTaskByID(taskID){
+	getTaskByID(taskID) {
 		/* let result //Holds forEach return value
 		this.#taskList.forEach(task => {
 			if(task.ID === taskID) {
@@ -57,18 +63,19 @@ class TaskManager{
 
 		//Filter, than return single taskObj
 		const r = this.#taskList.filter(task => task.ID === taskID)
-		return (r != null && r.length > 0) ? r[0]:null
+		return (r != null && r.length > 0) ? r[0] : null
 	}
 
+
 	//Adds a task with a unique ID to the taskList: Camerion
-	addTask(name, description, assignedTo, dueDate, status){
+	addTask(name, description, assignedTo, dueDate, status) {
 		//Generates a new ID by getting length.
 		let id
 		//If there is an task in the taskList, grab the last entry and make id = the incremented id of lastTask
-		if(this.#taskList.length > 0){
+		if (this.#taskList.length > 0) {
 			const lastTask = this.#taskList[this.#taskList.length - 1]; //Get last task in the array
 			id = lastTask.ID + 1;
-		}else{
+		} else {
 			id = 1;
 		}
 
@@ -80,8 +87,9 @@ class TaskManager{
 		this.render()
 	}
 
+
 	//Updates the task and saves it to localStorage: James
-	updateTask(taskObj){
+	updateTask(taskObj) {
 		this.#taskList.forEach(task => {
 			if (task.ID === taskObj.ID) {
 				task = taskObj
@@ -91,8 +99,9 @@ class TaskManager{
 		this.render()
 	}
 
+
 	//Delete a task and saves it to localStorage: Declan
-	deleteTask(taskObj){
+	deleteTask(taskObj) {
 		this.#taskList = this.#taskList.filter(task => taskObj.ID !== task.ID) //Filter taskList
 
 		//Update DOM
@@ -100,44 +109,23 @@ class TaskManager{
 	}
 
 
-	//Generates the HTML and renders it to the DOM: done as team ("pair" coding)
-	render(){
-		//Get card container
-		const cardContainer = document.getElementById("content-container")
-
-		//Wipe existing cards
-		cardContainer.innerHTML = ''
-
-		//Iterate through the taskList and render each card
-		this.#taskList.forEach(task => {
-			//Prepare cardElement
-			let cardElement = document.createElement('li')
-			cardElement.className = "list-group-item"
-			cardElement.setAttribute("task-id", task.ID)
-
-			//Create HTML card and render to DOM
-			cardElement.innerHTML = this.createTaskHTML(task)
-			cardContainer.appendChild(cardElement)
-		})
-		this.saveToStorage()
-	}
-
 	//Saves tasks to localStorage: Cameron
-	saveToStorage(){
+	saveToStorage() {
 		//Serialize the taskList
 		const tasksSerial = JSON.stringify(this.#taskList)
 		//Get existing localStorage serialized data
 		const existingStorage = localStorage.getItem(TaskManager.#storageKey)
 
 		//If the existingStorage is outdated, update it
-		if(existingStorage !== tasksSerial){
+		if (existingStorage !== tasksSerial) {
 			localStorage.setItem(TaskManager.#storageKey, tasksSerial)
 		}
 	}
 
+
 	//Loads tasks from localStorage: Cameron
-	loadFromStorage(){
-		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey), )
+	loadFromStorage() {
+		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey),)
 
 		//Convert DueDate from string to DateObj (JSON serialization doesn't convert it back)
 		this.#taskList = tasks.map((task) => {
@@ -146,9 +134,39 @@ class TaskManager{
 		})
 	}
 
+
+	//Generates the HTML and renders it to the DOM: done as team ("pair" coding)
+	render() {
+		//Get card container
+		const cardContainer = document.getElementById("content-container")
+
+		//Wipe existing cards
+		cardContainer.innerHTML = ''
+
+		//Iterate through the taskList and render each card
+		if (this.#taskList.length > 0) {
+			this.#taskList.forEach(task => {
+				//Prepare cardElement
+				let cardElement = document.createElement('li')
+				cardElement.className = "list-group-item"
+				cardElement.setAttribute("task-id", task.ID)
+
+				//Create HTML card and render to DOM
+				cardElement.innerHTML = this.createTaskHTML(task)
+				cardContainer.appendChild(cardElement)
+			})
+		} else {
+			//TODO: render tutorial page
+			cardContainer.innerHTML = ``
+		}
+
+		this.saveToStorage()
+	}
+
+
 	//Generates the card HTML with data for a given taskObj: Cameron
-	createTaskHTML(taskObj){
-		
+	createTaskHTML(taskObj) {
+
 		//Formats status to be consistent with the "add task" form
 		let status = this.taskStatus()[taskObj.Status];
 		//TODO: sort task by due date
@@ -166,26 +184,25 @@ class TaskManager{
 				<div class="card-footer">
 					<h5>${status}</h5>
 					<p>${ //Due Date
-						//Prepends a 0 if the day is less than 10.
-						(taskObj.DueDate.getDate() < 10) ? `0${taskObj.DueDate.getDate()}` : taskObj.DueDate.getDate()
-						}/${
-						//Prepends a 0 if month is less than 10
-						(taskObj.DueDate.getMonth() + 1 < 10) ? `0${taskObj.DueDate.getMonth() + 1}` : taskObj.DueDate.getMonth() + 1
-						}/${taskObj.DueDate.getFullYear()}</p>
+			//Prepends a 0 if the day is less than 10.
+			(taskObj.DueDate.getDate() < 10) ? `0${taskObj.DueDate.getDate()}` : taskObj.DueDate.getDate()
+			}/${
+			//Prepends a 0 if month is less than 10
+			(taskObj.DueDate.getMonth() + 1 < 10) ? `0${taskObj.DueDate.getMonth() + 1}` : taskObj.DueDate.getMonth() + 1
+			}/${taskObj.DueDate.getFullYear()}</p>
 				</div>
 			</div>`
 	}
 
+
 	//Renders the open card: Cameron
-	renderOpenCard(taskObj){
+	renderOpenCard(taskObj) {
 		//Get elements
 		document.getElementById("open-card").setAttribute("task-id", taskObj.ID)
 		const taskName = document.getElementById("open-card-title")
 		const ddat = document.getElementById("open-card-duedate-assignedto") //Merged into one element
 		const description = document.getElementById("open-card-description")
 		const status = document.getElementById("opencard-status")
-		
-		
 
 		//Set data
 		taskName.textContent = taskObj.Name
