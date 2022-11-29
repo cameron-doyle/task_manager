@@ -15,42 +15,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		tm.updateTask(taskObj)
 
-		//Disables the "mark as done" button
-		e.target.setAttribute("disabled", '')
-
 		//Set status dropdown to complete/done
 		document.getElementById("opencard-status").value = Object.keys(tm.taskStatus())[3]
+
+		//Swaps and disables buttons if needed
+		updateOpenCardButtons()
 	})
 
 	//Updates the task: Cameron
 	document.getElementById("btn-opencard-update").addEventListener("click", (e) => {
-		//TODO: Update task
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
 
-		//taskObjFactory(id, name, description, assignedTo, dueDate, status) {
-		/* const taskObj = tm.taskObjFactory(
-			taskID,
-			document.getElementById("open-card-title").value, //Task Name
-			document.getElementById("open-card-duedate-assignedto").value, //AssignedTo and DueDate
-			document.getElementById("open-card-description").value, //
-			document.getElementById("opencard-status").value,
-		); */
+		//Get taskObj and update status from the form.
 		const taskObj = tm.getTaskByID(taskID)
 		taskObj.Status = document.getElementById("opencard-status").value
+
 		tm.updateTask(taskObj)
 
-		//Check
-		if(taskObj.Status === Object.keys(tm.taskStatus())[3]){
-			document.getElementById("btn-opencard-mark").setAttribute("disabled", '')
-		}else{
-			document.getElementById("btn-opencard-mark").removeAttribute("disabled", '')
-		}
+		//Swaps and disables buttons if needed
 		updateOpenCardButtons()
 	})
 
 	//Deletes the task: Declan
 	document.getElementById("opencard-delete").addEventListener("click", (e) => {
-		//Get task id from HTML
+		//Get task id from HTML and deletes
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
 		const taskObj = tm.getTaskByID(taskID);
 		tm.deleteTask(taskObj)
@@ -83,6 +71,12 @@ window.addEventListener('DOMContentLoaded', () => {
 			btnUpdate.classList = "btn btn-primary"
 			btnMark.classList = "btn btn-primary none"
 		}
+
+		if(taskObj.Status === Object.keys(tm.taskStatus())[3]){
+			document.getElementById("btn-opencard-mark").setAttribute("disabled", '')
+		}else{
+			document.getElementById("btn-opencard-mark").removeAttribute("disabled", '')
+		}
 	}
 
 	//Updates data on card popup: Cameron
@@ -113,15 +107,11 @@ window.addEventListener('DOMContentLoaded', () => {
 		if(!myTask || myTask.ID !== taskID)
 			throw new Error("Task does not exist?!")
 
-		//Disables "mark as done" button if already marked as complete/done (index 3), otherwise enables it
-		if(myTask.Status === Object.keys(tm.taskStatus())[3]){
-			document.getElementById("btn-opencard-mark").setAttribute("disabled", '')
-		}else{
-			document.getElementById("btn-opencard-mark").removeAttribute("disabled", '')
-		}
-
 		//Render card data
 		tm.renderOpenCard(myTask)
+
+		//Swaps and disabled buttons if needed
+		updateOpenCardButtons()
 	})
 
 	//Form submit event for add new task
