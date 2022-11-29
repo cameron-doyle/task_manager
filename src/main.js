@@ -12,7 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	/* add event listener to button ElementID "opencard-delete" event "click" (easy): Declan */
 	/* The button gets the taskObj via taskID (See line 22-24) and calls the tm.deleteTask(taskObj) */
-
+	document.getElementById("opencard-delete").addEventListener("click", (e) => {
+		//Get task id from HTML
+		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
+		const taskObj = tm.getTaskByID(taskID);
+		tm.deleteTask(taskObj)
+	})
 
 
 	//Changes button from "marked as done" to "save task" on open card when change detected.
@@ -222,3 +227,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	setInterval(updateTime, 1000) //If showing seconds, change this to be lower (like 5ms)
 });
+

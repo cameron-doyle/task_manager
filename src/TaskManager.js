@@ -90,8 +90,15 @@ class TaskManager{
 	//TODO: Declan
 	deleteTask(taskObj){
 		console.log("Task being deleted:", taskObj)
+		this.#taskList.forEach(task => {
+			if(task.ID === taskObj.ID) {
+				task = null 
+			}
+				
+		});
+		this.render()
 		//Remove the task from the #taskList
-		//See getTaskByID() for inspiration
+	    //See getTaskByID() for inspiration
 		//call render()
 	}
 
@@ -155,6 +162,8 @@ class TaskManager{
 		const ddat = document.getElementById("open-card-duedate-assignedto") //Merged into one element
 		const description = document.getElementById("open-card-description")
 		const status = document.getElementById("opencard-status")
+		
+		
 
 		//Set data
 		taskName.textContent = taskObj.Name
