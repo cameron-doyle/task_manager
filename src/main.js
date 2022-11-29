@@ -165,11 +165,17 @@ window.addEventListener('DOMContentLoaded', () => {
 		const date = dsDueDateElement.valueAsDate
 		let currentDate = new Date()
 
+		//Removes time from both so comparison works properly (bug fix)
+		if(date != null){
+			date.setHours(0,0,0,0)
+			currentDate.setHours(0,0,0,0)
+		}
+
 		//If date is "less than current date" throw error
 		if (date === null) {
 			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
 			wasError = true;
-		} else if (date < currentDate) {
+		} else if (date < currentDate) { //BUG: DueDate doesn't match because it's using time now?!
 			validationFailed(dsDueDateElement, "Due Date cannot be set in the past!")
 			wasError = true;
 		}
@@ -241,6 +247,20 @@ window.addEventListener('DOMContentLoaded', () => {
 			//Prepends a 0 if month is less than 10
 			((date.getMonth() + 1) < 10) ? `0${date.getMonth() + 1}` : date.getMonth() + 1
 			}/${date.getFullYear()}`
+		updateDueDateLimit()
+	}
+
+	//Changes the min limlit on the DueDate input
+	async function updateDueDateLimit() {
+		const today = new Date();
+		document.getElementById("ds-task-due-date").setAttribute("min",
+			`${
+				today.getFullYear()
+			}-${
+				(today.getMonth() + 1 < 10) ? `0${today.getMonth() + 1}`:today.getMonth() + 1
+			}-${
+				(today.getDate() < 10) ? `0${today.getDate()}`:today.getDate()
+		}`)
 	}
 
 	//A fucntion that formats 24 hour time into 12 hour time
