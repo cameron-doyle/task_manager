@@ -4,7 +4,7 @@ class TaskManager {
 
 
 	//A status "constant" "enum": Cameron
-	taskStatus() {
+	static taskStatus() {
 		return {
 			todo: "To Do",
 			inprogress: "In Progress",
@@ -180,7 +180,7 @@ class TaskManager {
 	createTaskHTML(taskObj) {
 
 		//Formats status to be consistent with the "add task" form
-		let status = this.taskStatus()[taskObj.Status];
+		let status = TaskManager.taskStatus()[taskObj.Status];
 		//TODO: sort task by due date
 
 		//Inject and format data into card html and return.
