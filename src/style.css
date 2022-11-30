@@ -442,17 +442,17 @@ body::before {
 	margin: 0;
 }
 
+/* Input Error */
 form span {
 	transition: height 250ms ease-in-out, top 250ms ease-in-out;
-	top: 0;
+	top: .1rem;
 	overflow: hidden;
 	display: inline-block;
 	height: 1.4em;
-	color: #e00909;
+	color: #ff0000;
 	font-weight: bold;
-	font-size: .75em;
+	font-size: .82em;
 	position: relative;
-
 }
 
 /* width */
