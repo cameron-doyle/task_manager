@@ -261,7 +261,10 @@ body::before {
 /* Content layout */
 #content-scoll {
 	/* Makes scroll bar the same height as the content, instread of being next to the nav as well */
-	height: calc(100vh - var(--nav-height));
+	/* height: calc(100vh - var(--nav-height)); */
+	height: calc(100% - var(--nav-height)); /* Changed from viewHeight to percent to stop background from "shrinking" when body min-width was reached  */
+	width: 100%;
+	position: fixed;
 	overflow-y: auto;
 	overflow-x: clip;
 
@@ -276,7 +279,7 @@ body::before {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	position: absolute;
+	position: fixed; /* Changed from absolute to fixed to stop background from "shrinking" when body min-width was reached */
 	z-index: -1;
 
 	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a9e4f7+0,0c66b5+100&0+56,0.08+74,0.43+92,0.6+100 */
