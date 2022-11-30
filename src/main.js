@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("nav-title-container").addEventListener("click", e => {
 		for (let i = 1; i <= 10; i++) {
 			//addTask(name, description, assignedTo, dueDate, status) {
-			const ranDescription = (Math.floor(Math.random * 100) >= 25) ? true:false // 25% chance of a long description
+			const ranDescription = (Math.floor(Math.random() * 100) >= 50) ? true:false // 25% chance of a long description
 
 			//random index for status
 			let statusIndex = Math.floor(Math.random() * 4)
