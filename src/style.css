@@ -37,7 +37,7 @@ body {
 
 	/* Space theme */
 	background-color: var(--background-color);
-	background-image: url("/images/stars.gif");
+	background-image: url("https://lh6.googleusercontent.com/eBFwI59-EySrxa5kdwfEp5SqABaHRSi0Gak-zv6z23Odqcccn_osbSRECLvCWH4HeRs=w2400");
 }
 
 /* Makes starts on the body duller https://css-tricks.com/snippets/css/transparent-background-images/ */
@@ -303,7 +303,7 @@ body::before {
 	position: absolute;
 	z-index: -1;
 
-	background-image: url("/images/space.gif");
+	background-image: url("https://lh5.googleusercontent.com/Ce24hmVZX5MQb1y2aKbKB2GI-ui1wmncSyZldTl_lQcBrXlWAxN_TTazpYHkU9sRPlo=w2400");
 }
 
 
