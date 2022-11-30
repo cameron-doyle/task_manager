@@ -303,7 +303,7 @@ body::before {
 	position: absolute;
 	z-index: -1;
 
-	background-image: url("/images/space.gif");
+	background-image: url("./../images/space.gif");
 }
 
 
