@@ -37,7 +37,7 @@ body {
 
 	/* Space theme */
 	background-color: var(--background-color);
-	background-image: url("./images/stars.gif");
+	background-image: url("./../images/stars.gif");
 }
 
 /* Makes starts on the body duller https://css-tricks.com/snippets/css/transparent-background-images/ */
