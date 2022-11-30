@@ -303,7 +303,7 @@ body::before {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	position: absolute;
+	position: fixed; /* Changed from absolute to fixed to stop background from "shrinking" when body min-width was reached */
 	z-index: -1;
 
 	background-image: url("./../images/space.gif");
