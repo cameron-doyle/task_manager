@@ -132,6 +132,8 @@ class TaskManager {
 			return
 
 		//Convert DueDate from string to DateObj (JSON serialization doesn't convert it back)
+		//REFERENCE: https://weblog.west-wind.com/posts/2014/jan/06/javascript-json-date-parsing-and-real-dates
+		//REFERENCE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 		this.#taskList = tasks.map((task) => {
 			task.DueDate = new Date(task.DueDate)
 			return task
