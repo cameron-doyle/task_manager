@@ -107,14 +107,17 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("content-container").addEventListener("click", (e) => {
 		e.stopPropagation() //Stops the event from "bubbling" past this container
 		let element = e.target
-
+		
 		//Returns if event was fired on the container
-		if (element === e.currentTarget)
+		if (element == null || element === e.currentTarget)
 			return
 
 		//Navigates up the DOM to find the "li" element which contains the taskID
 		while (element.nodeName !== "LI") {
+			
 			element = element.parentElement
+			if(element.nodeName == null || element.parentElement == null)
+				return
 		}
 
 		//Extracts task ID

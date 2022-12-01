@@ -362,6 +362,11 @@ body::before {
 .card {
 	height: 100%;
 	background-color: inherit;
+	transition:200ms;
+}
+
+.card:hover{
+	transform: scale(105%);
 }
 
 .card .card-header {
@@ -504,6 +509,11 @@ form span {
 	height: calc((100vh - var(--nav-height)) - (var(--content-padding-y) * 2) - (100vh * .02));
 	padding: 2% 5%;
 	position: relative;
+}
+
+#tutorial h2 {
+	font-family: 'Dancing Script', cursive;
+	font-size: 3rem;
 }
 
 #tutorial .material-symbols-outlined{
