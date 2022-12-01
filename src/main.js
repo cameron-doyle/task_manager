@@ -11,12 +11,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		const taskObj = tm.getTaskByID(taskID);
 
 		//Set status to complete/done
-		taskObj.Status = Object.keys(tm.taskStatus())[3]
+		taskObj.Status = Object.keys(TaskManager.taskStatus())[3]
 
 		tm.updateTask(taskObj)
 
 		//Set status dropdown to complete/done
-		document.getElementById("opencard-status").value = Object.keys(tm.taskStatus())[3]
+		document.getElementById("opencard-status").value = Object.keys(TaskManager.taskStatus())[3]
 
 		//Swaps and disables buttons if needed
 		updateOpenCardButtons()
@@ -42,6 +42,30 @@ window.addEventListener('DOMContentLoaded', () => {
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
 		const taskObj = tm.getTaskByID(taskID);
 		tm.deleteTask(taskObj)
+	})
+
+
+	//Generates some test cards on title click: Cameron
+	document.getElementById("nav-title-container").addEventListener("click", e => {
+		for (let i = 1; i <= 10; i++) {
+			//addTask(name, description, assignedTo, dueDate, status) {
+			const ranDescription = (Math.floor(Math.random() * 100) >= 50) ? true:false // 25% chance of a long description
+
+			//random index for status
+			let statusIndex = Math.floor(Math.random() * 4)
+			statusIndex = (statusIndex > 3) ? 3:statusIndex
+			const status = Object.keys(TaskManager.taskStatus())[statusIndex];
+			//Generate task
+			tm.addTask(
+				`Test Task #${i}`,
+				(ranDescription) ?
+				`Test Task Long Description #${i}\nLorem ipsum dolor sit amet consectetur adipisicing elit. Ab vitae iusto expedita iure id aliquam corporis amet aliquid esse fugit earum voluptatem quasi eos nesciunt neque cum quae vel magni quibusdam, eligendi numquam. Nostrum iure totam ab dolore adipisci laboriosam natus dolorem vel doloribus facilis! Nulla, laborum quae nihil facere perferendis, totam necessitatibus consequatur quidem veniam, voluptate eius reprehenderit ea? Expedita, impedit excepturi eveniet eum voluptatibus, dicta repellat qui officiis similique eligendi illum. Nostrum blanditiis sunt eaque vitae accusamus esse, laboriosam corrupti reiciendis dolorum nihil odit, rem harum nulla, asperiores reprehenderit itaque aliquam adipisci! Deleniti tenetur quaerat eaque ex sequi.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vitae iusto expedita iure id aliquam corporis amet aliquid esse fugit earum voluptatem quasi eos nesciunt neque cum quae vel magni quibusdam, eligendi numquam. Nostrum iure totam ab dolore adipisci laboriosam natus dolorem vel doloribus facilis! Nulla, laborum quae nihil facere perferendis, totam necessitatibus consequatur quidem veniam, voluptate eius reprehenderit ea? Expedita, impedit excepturi eveniet eum voluptatibus, dicta repellat qui officiis similique eligendi illum. Nostrum blanditiis sunt eaque vitae accusamus esse, laboriosam corrupti reiciendis dolorum nihil odit, rem harum nulla, asperiores reprehenderit itaque aliquam adipisci! Deleniti tenetur quaerat eaque ex sequi.`
+				:`Test Task Description #${i}`, 
+				`A Person #${i}`, 
+				new Date(), 
+				status
+			);
+		}
 	})
 
 
@@ -72,7 +96,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			btnMark.classList = "btn btn-primary none"
 		}
 
-		if (taskObj.Status === Object.keys(tm.taskStatus())[3]) {
+		if (taskObj.Status === Object.keys(TaskManager.taskStatus())[3]) {
 			document.getElementById("btn-opencard-mark").setAttribute("disabled", '')
 		} else {
 			document.getElementById("btn-opencard-mark").removeAttribute("disabled", '')
@@ -83,14 +107,17 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("content-container").addEventListener("click", (e) => {
 		e.stopPropagation() //Stops the event from "bubbling" past this container
 		let element = e.target
-
+		
 		//Returns if event was fired on the container
-		if (element === e.currentTarget)
+		if (element == null || element === e.currentTarget)
 			return
 
 		//Navigates up the DOM to find the "li" element which contains the taskID
 		while (element.nodeName !== "LI") {
+			
 			element = element.parentElement
+			if(element.nodeName == null || element.parentElement == null)
+				return
 		}
 
 		//Extracts task ID
@@ -152,7 +179,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		const statusElement = document.getElementById("txt-new-task-status")
 
 		//Checks value against the taskStatus "enum"
-		if (!tm.taskStatus()[statusElement.value]) {
+		if (!TaskManager.taskStatus()[statusElement.value]) {
 			validationFailed(statusElement, "Please select a valid status!");
 			wasError = true;
 		}
@@ -230,7 +257,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		document.getElementById("txt-new-task-name").value = ''
 		document.querySelector('#txt-new-task-description').value = ''
 		document.getElementById("txt-new-task-assigned-to").value = ''
-		document.getElementById("txt-new-task-status").value = Object.keys(tm.taskStatus())[0]
+		document.getElementById("txt-new-task-status").value = Object.keys(TaskManager.taskStatus())[0]
 		document.getElementById("ds-task-due-date").value = null
 	}
 

@@ -4,7 +4,7 @@ class TaskManager {
 
 
 	//A status "constant" "enum": Cameron
-	taskStatus() {
+	static taskStatus() {
 		return {
 			todo: "To Do",
 			inprogress: "In Progress",
@@ -180,22 +180,22 @@ class TaskManager {
 	createTaskHTML(taskObj) {
 
 		//Formats status to be consistent with the "add task" form
-		let status = this.taskStatus()[taskObj.Status];
+		let status = TaskManager.taskStatus()[taskObj.Status];
 		//TODO: sort task by due date
 
 		//Inject and format data into card html and return.
 		return `<div class="card" data-bs-toggle="modal" data-bs-target="#open-card">
 				<div class="card-header">
-					<h3>${taskObj.Name}</h3>
-					<p>${taskObj.AssignedTo}</p>
+					<h3 class="unselectable">${taskObj.Name}</h3>
+					<p class="unselectable">${taskObj.AssignedTo}</p>
 				</div>
 				<div class="card-body">
-					<p>${taskObj.Description}</p>
+					<p class="unselectable">${taskObj.Description}</p>
 				</div>
 
 				<div class="card-footer">
-					<h5>${status}</h5>
-					<p>${ //Due Date
+					<h5 class="unselectable">${status}</h5>
+					<p class="unselectable">${ //Due Date
 			//Prepends a 0 if the day is less than 10.
 			(taskObj.DueDate.getDate() < 10) ? `0${taskObj.DueDate.getDate()}` : taskObj.DueDate.getDate()
 			}/${
