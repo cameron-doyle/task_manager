@@ -125,7 +125,17 @@ class TaskManager {
 
 	//Loads tasks from localStorage: Cameron
 	loadFromStorage() {
-		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey),)
+		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey))
+
+		try {
+			fetch('https://jwd09-task-api.herokuapp.com')
+				.then(res => res.json())
+				.then(data => {
+					console.log(data)
+				})
+		} catch (error) {
+			console.error(error)
+		}
 
 		//Check if tasks is null (bugfix)
 		if(tasks == null)
