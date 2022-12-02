@@ -512,8 +512,8 @@ form span {
 	background-color: var(--nav-color-transparent);
 	border-radius: 2rem;
 	color: white;
-	width: 100%;
-	height: calc((100vh - var(--nav-height)) - (var(--content-padding-y) * 2) - (100vh * .02));
+	width: 99%;
+	height: calc((100vh - var(--nav-height)) - (var(--content-padding-y) * 2) - (100vh * .05));
 	padding: 2% 5%;
 	position: relative;
 }
