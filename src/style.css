@@ -23,6 +23,7 @@
 	--modal-footer: #b4c8e8f8;
 	--content-padding-y: calc(100vh * .05);
 	--content-padding-x: calc(100vw * .04);
+	--card-fade: #8A9FB8;
 }
 
 .clear::after {
@@ -42,6 +43,7 @@ body {
 
 /* Makes starts on the body duller https://css-tricks.com/snippets/css/transparent-background-images/ */
 body::before {
+	border: none;
 	content: "";
 	top: 0;
 	left: 0;
@@ -127,7 +129,7 @@ body::before {
 #open-card-description {
 	margin: 1% 4%;
 	text-align: justify;
-	min-height: 18rem;
+	height: 18rem;
 }
 
 #open-card-duedate-assignedto {
@@ -262,7 +264,8 @@ body::before {
 #content-scoll {
 	/* Makes scroll bar the same height as the content, instread of being next to the nav as well */
 	/* height: calc(100vh - var(--nav-height)); */
-	height: calc(100% - var(--nav-height)); /* Changed from viewHeight to percent to stop background from "shrinking" when body min-width was reached  */
+	height: calc(100% - var(--nav-height));
+	/* Changed from viewHeight to percent to stop background from "shrinking" when body min-width was reached  */
 	width: 100%;
 	position: fixed;
 	overflow-y: auto;
@@ -279,7 +282,8 @@ body::before {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	position: fixed; /* Changed from absolute to fixed to stop background from "shrinking" when body min-width was reached */
+	position: fixed;
+	/* Changed from absolute to fixed to stop background from "shrinking" when body min-width was reached */
 	z-index: -1;
 
 	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a9e4f7+0,0c66b5+100&0+56,0.08+74,0.43+92,0.6+100 */
@@ -303,7 +307,8 @@ body::before {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	position: fixed; /* Changed from absolute to fixed to stop background from "shrinking" when body min-width was reached */
+	position: fixed;
+	/* Changed from absolute to fixed to stop background from "shrinking" when body min-width was reached */
 	z-index: -1;
 
 	background-image: url("./../images/space.gif");
@@ -362,10 +367,10 @@ body::before {
 .card {
 	height: 100%;
 	background-color: inherit;
-	transition:200ms;
+	transition: 200ms;
 }
 
-.card:hover{
+.card:hover {
 	transform: scale(105%);
 }
 
@@ -373,6 +378,7 @@ body::before {
 	background-color: var(--card-header);
 	color: white;
 	font-family: 'Space Grotesk', sans-serif;
+	border: none;
 }
 
 .card .card-footer {
@@ -380,6 +386,7 @@ body::before {
 	color: black;
 	font-family: 'Space Grotesk', sans-serif;
 	font-weight: bold;
+	border: none;
 }
 
 #content-container .card-header p,
@@ -493,20 +500,20 @@ form span {
 }
 
 .unselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
-#tutorial{
+#tutorial {
 	background-color: var(--nav-color-transparent);
 	border-radius: 2rem;
 	color: white;
-	width: 100%;
-	height: calc((100vh - var(--nav-height)) - (var(--content-padding-y) * 2) - (100vh * .02));
+	width: 99%;
+	height: calc((100vh - var(--nav-height)) - (var(--content-padding-y) * 2) - (100vh * .05));
 	padding: 2% 5%;
 	position: relative;
 }
@@ -516,7 +523,7 @@ form span {
 	font-size: 3rem;
 }
 
-#tutorial .material-symbols-outlined{
+#tutorial .material-symbols-outlined {
 	font-size: 5rem;
 	position: absolute;
 
@@ -542,11 +549,13 @@ form span {
 	right: 0;
 	rotate: -45deg;
 }
+
 #tutorial #arrow_button {
 	bottom: 0;
 	right: 0;
 	rotate: 45deg;
 }
+
 #tutorial #arrow_clock {
 	bottom: 0;
 	left: 0;
@@ -575,6 +584,28 @@ form span {
 
 	.card-body {
 		overflow-y: hidden;
+		position: relative;
+	}
+
+	.card-body p::after {
+		content: "";
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		/* z-index: -1; Puts in background*/
+
+
+		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1c1c1c+0,ffffff+100&0+93,1+100 */
+		background: -moz-linear-gradient(top, rgba(28, 28, 28, 0) 0%, rgba(239, 239, 239, 0) 85%, rgb(138, 159, 184) 100%);
+		/* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(28, 28, 28, 0) 0%, rgba(239, 239, 239, 0) 85%, rgb(138, 159, 184) 100%);
+		/* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(28, 28, 28, 0) 0%, rgba(239, 239, 239, 0) 85%, rgb(138, 159, 184) 100%);
+		/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#001c1c1c', endColorstr='#ffffff', GradientType=0);
+		/* IE6-9 */
 	}
 }
 
