@@ -129,7 +129,7 @@ body::before {
 #open-card-description {
 	margin: 1% 4%;
 	text-align: justify;
-	min-height: 18rem;
+	height: 18rem;
 }
 
 #open-card-duedate-assignedto {
