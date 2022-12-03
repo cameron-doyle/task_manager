@@ -138,8 +138,6 @@ class TaskManager {
 			task.DueDate = new Date(task.DueDate)
 			return task
 		})
-
-		console.log(this.#taskList)
 	}
 
 
