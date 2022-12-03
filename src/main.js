@@ -63,7 +63,8 @@ window.addEventListener('DOMContentLoaded', () => {
 				:`Test Task Description #${i}`, 
 				`A Person #${i}`, 
 				new Date(), 
-				status
+				status,
+				false
 			);
 		}
 	})

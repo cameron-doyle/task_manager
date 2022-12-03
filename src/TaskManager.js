@@ -15,14 +15,16 @@ class TaskManager {
 
 
 	//A factory function for the task object creation: Cameron
-	taskObjFactory(id, name, description, assignedTo, dueDate, status) {
+	taskObjFactory(id, name, description, assignedTo, dueDate, status, saveToServer) {
 		return {
 			ID: id,
 			Name: name,
 			Description: description,
 			AssignedTo: assignedTo,
 			DueDate: dueDate,
-			Status: status
+			Status: status,
+			SaveToServer: saveToServer,
+			PodName: 'Coding Den'
 		}
 	}
 
@@ -68,7 +70,7 @@ class TaskManager {
 
 
 	//Adds a task with a unique ID to the taskList: Camerion
-	addTask(name, description, assignedTo, dueDate, status) {
+	addTask(name, description, assignedTo, dueDate, status, saveToServer = true) {
 		//Generates a new ID by getting length.
 		let id
 		//If there is an task in the taskList, grab the last entry and make id = the incremented id of lastTask
@@ -80,7 +82,7 @@ class TaskManager {
 		}
 
 		//Push new task to the array after genrating taskObj using factory function.
-		this.#taskList.push(this.taskObjFactory(id, name, description, assignedTo, dueDate, status))
+		this.#taskList.push(this.taskObjFactory(id, name, description, assignedTo, dueDate, status, saveToServer))
 		const stringData = JSON.stringify(this.#taskList);
 
 		//Renders the DOM
@@ -120,6 +122,26 @@ class TaskManager {
 		if (existingStorage !== tasksSerial) {
 			localStorage.setItem(TaskManager.#storageKey, tasksSerial)
 		}
+
+		/* 
+			id: INT,
+			title: STRING,
+			description: STRING,
+			assigned_to: STRING,
+			date: DATE,
+			pod_name: STRING,
+		*/
+		//TODO: Save to api
+		/* NOTE, convert 'complete' to 'done' */
+		/* try {
+			fetch('https://jwd09-task-api.herokuapp.com')
+				.then(res => res.json())
+				.then(data => {
+					//console.log(data)
+				})
+		} catch (error) {
+			console.error(error)
+		} */
 	}
 
 
@@ -127,11 +149,57 @@ class TaskManager {
 	loadFromStorage() {
 		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey))
 
+		/* 
+			id: INT,
+			title: STRING,
+			description: STRING,
+			assigned_to: STRING,
+			date: DATE,
+			pod_name: STRING,
+		*/
+
+		//BUG: Async is causing problems
 		try {
-			fetch('https://jwd09-task-api.herokuapp.com')
+			fetch('https://jwd09-task-api.herokuapp.com/api/v1/tasks#index')
 				.then(res => res.json())
 				.then(data => {
-					console.log(data)
+					//console.log(data)
+					const newTasks = data.map((apiTask) => {
+
+						//Convert poorly standazied status values into something usable (lowercase and remove whitepsace)
+						let ourStatus = apiTask.status.toLowerCase().replace(/\s/g,'');
+						
+						//convert 'done' status into 'complete'
+						ourStatus = (ourStatus === 'done') ? 'complete':ourStatus
+
+						//Convert ISO string (8601 format) into date instance
+						const OurDueDate = new Date(apiTask.date)
+
+						//Remap objects
+						return {
+							ID: apiTask.id,
+							Name: apiTask.title,
+							Description: apiTask.description,
+							AssignedTo: apiTask.assigned_to,
+							DueDate: OurDueDate,
+							Status: ourStatus,
+							SaveToServer: false,
+							PodName: apiTask.pod_name
+						}
+					})
+
+					//Sort array by taskID's
+					newTasks.sort((taskA, taskB) => {
+						if(taskA.ID < taskB.ID){
+							return -1
+						}else if(taskA.ID > taskB.ID){
+							return 1
+						}else{
+							return 0
+						}
+					})
+
+					this.#taskList = newTasks
 				})
 		} catch (error) {
 			console.error(error)
@@ -144,10 +212,12 @@ class TaskManager {
 		//Convert DueDate from string to DateObj (JSON serialization doesn't convert it back)
 		//REFERENCE: https://weblog.west-wind.com/posts/2014/jan/06/javascript-json-date-parsing-and-real-dates
 		//REFERENCE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
-		this.#taskList = tasks.map((task) => {
+		this.#taskList.concat(tasks.map((task) => {
 			task.DueDate = new Date(task.DueDate)
 			return task
-		})
+		}))
+
+		console.log(this.#taskList)
 	}
 
 
