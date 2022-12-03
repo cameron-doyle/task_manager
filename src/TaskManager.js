@@ -125,7 +125,7 @@ class TaskManager {
 
 	//Loads tasks from localStorage: Cameron
 	loadFromStorage() {
-		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey),)
+		const tasks = JSON.parse(localStorage.getItem(TaskManager.#storageKey))
 
 		//Check if tasks is null (bugfix)
 		if(tasks == null)

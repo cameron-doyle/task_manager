@@ -147,8 +147,13 @@ body::before {
 	overflow-y: auto;
 }
 
+#open-card .modal-header{
+	border: none;
+}
+
 #opencard-footer {
 	justify-content: space-between;
+	border: none;
 }
 
 #card-control-container {
@@ -214,6 +219,10 @@ body::before {
 
 
 /* New Task Modal */
+#new-task .modal-dialog {
+	margin-top: calc(var(--nav-height) + 2%);
+}
+
 #btn-add-new-task {
 	position: fixed;
 	bottom: 1.5rem;
@@ -246,6 +255,7 @@ body::before {
 #new-task .modal-header {
 	background-color: var(--modal-header);
 	color: white;
+	border: none;
 }
 
 #new-task .modal-body {
@@ -254,6 +264,7 @@ body::before {
 
 #new-task .modal-footer {
 	background-color: var(--modal-footer);
+	border: none;
 }
 
 /* End new task modal */
@@ -608,5 +619,3 @@ form span {
 		/* IE6-9 */
 	}
 }
-
-/* Don't put code below here, non mobile code must come before the @media query */
