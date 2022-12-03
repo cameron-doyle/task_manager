@@ -160,7 +160,10 @@ class TaskManager {
 
 		//BUG: Async is causing problems
 		try {
-			fetch('https://jwd09-task-api.herokuapp.com/api/v1/tasks#index')
+			fetch('https://jwd09-task-api.herokuapp.com', {
+				method: 'GET',
+				mode: 'no-cors'
+			})
 				.then(res => res.json())
 				.then(data => {
 					//console.log(data)
