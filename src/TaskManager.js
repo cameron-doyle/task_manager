@@ -163,8 +163,7 @@ class TaskManager {
 			fetch('https://jwd09-task-api.herokuapp.com', {
 				method: 'GET',
 				mode: 'no-cors'
-			})
-				.then(res => res.json())
+			}).then(res => res.json())
 				.then(data => {
 					//console.log(data)
 					const newTasks = data.map((apiTask) => {
@@ -203,9 +202,11 @@ class TaskManager {
 					})
 
 					this.#taskList = newTasks
+				}).catch(e => {
+					console.warn(e)
 				})
 		} catch (error) {
-			console.error(error)
+			console.warn(error)
 		}
 
 		//Check if tasks is null (bugfix)
