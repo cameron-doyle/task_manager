@@ -159,7 +159,7 @@ class TaskManager {
 		*/
 
 		//BUG: Async is causing problems
-		try {
+/* 		try {
 			fetch('https://jwd09-task-api.herokuapp.com', {
 				method: 'GET',
 				mode: 'no-cors'
@@ -207,7 +207,7 @@ class TaskManager {
 				})
 		} catch (error) {
 			console.warn(error)
-		}
+		} */
 
 		//Check if tasks is null (bugfix)
 		if(tasks == null)
@@ -216,10 +216,10 @@ class TaskManager {
 		//Convert DueDate from string to DateObj (JSON serialization doesn't convert it back)
 		//REFERENCE: https://weblog.west-wind.com/posts/2014/jan/06/javascript-json-date-parsing-and-real-dates
 		//REFERENCE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
-		this.#taskList.concat(tasks.map((task) => {
+		this.#taskList = tasks.map((task) => {
 			task.DueDate = new Date(task.DueDate)
 			return task
-		}))
+		})
 
 		console.log(this.#taskList)
 	}
