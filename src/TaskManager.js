@@ -167,7 +167,7 @@ class TaskManager {
 			<h2 style="margin-bottom: 2rem;">Welcome to this super mega awesome task manager!</h2>
 			<p>To start, on the top right, we have the GitHub repo where you can see who made me!<br>On the bottom right, we have an add task button!<br>If you click on the title, it'll spawn some test cards for you!<br>On the bottom left, we have a clock so you never forget a deadline!<br>And last but not least, if you click on a card (after you make one) you'll have some extra controls!</p>
 			<p style="margin-top: 2rem;">I hope you enjoy your stay~</p>
-			<p>- Task Manager</p>
+			<p>- Space Manager</p>
 			
 			<span id="arrow_button" class="material-symbols-outlined">arrow_right_alt</span>
 			
