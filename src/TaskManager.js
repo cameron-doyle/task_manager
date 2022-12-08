@@ -42,12 +42,12 @@ class TaskManager {
 
 	//Returns all tasks that are set to a given status: Declan
 	getTasksWithStatus(status) {
-		let newTaskList = [];
+		/* let newTaskList = [];
 		this.#taskList.forEach(task => {
 			if (task.Status === status)
 				newTaskList.push(task)
-		});
-		return newTaskList
+		}); */
+		return this.#taskList.filter(task => task.Status === status)
 	}
 
 
