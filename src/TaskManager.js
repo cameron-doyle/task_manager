@@ -73,8 +73,7 @@ class TaskManager {
 		let id
 		//If there is an task in the taskList, grab the last entry and make id = the incremented id of lastTask
 		if (this.#taskList.length > 0) {
-			const lastTask = this.#taskList[this.#taskList.length - 1]; //Get last task in the array
-			id = lastTask.ID + 1;
+			id = this.#taskList[this.#taskList.length - 1].ID + 1;
 		} else {
 			id = 1;
 		}
@@ -101,8 +100,8 @@ class TaskManager {
 
 
 	//Delete a task and saves it to localStorage: Declan
-	deleteTask(taskObj) {
-		this.#taskList = this.#taskList.filter(task => taskObj.ID !== task.ID) //Filter taskList
+	deleteTask(taskID) {
+		this.#taskList = this.#taskList.filter(task => taskID !== task.ID) //Filter taskList
 
 		//Update DOM
 		this.render()

@@ -40,8 +40,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	document.getElementById("opencard-delete").addEventListener("click", (e) => {
 		//Get task id from HTML and deletes
 		const taskID = Number(document.getElementById("open-card").getAttribute("task-id"))
-		const taskObj = tm.getTaskByID(taskID);
-		tm.deleteTask(taskObj)
+		/* const taskObj = tm.getTaskByID(taskID); */
+		tm.deleteTask(taskID)
 	})
 
 
