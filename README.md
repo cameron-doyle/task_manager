@@ -15,6 +15,6 @@ Bootstrap<br>
 Declan<br>
 James Foody: jamesfoody80@gmail.com<br>
 Tamika Strangewidge: tamika-vanderzwet@hotmail.com<br>
-Cameron Doyle: dev.camerondoyle@gmail.com<br>
+Cameron Doyle: dev.camerondoyle@gmail.com<br> >:U
 野洲くん (Yasu-Kun): katsuroyasu@gmail.com<br>
 </p>
